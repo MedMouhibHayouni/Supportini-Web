@@ -10,7 +10,7 @@ Bootstrap
 ### Login Page
 <img src = "https://user-images.githubusercontent.com/110169371/209474318-3a94c35f-fbee-48cc-9240-3de302e51f32.png" width="400">
 
-### Consult Nearby Gyms 
+### Check your progress and get Feedback
 
-<img src = "https://user-images.githubusercontent.com/110169371/209474378-a113228a-15bc-4c05-8fe9-955000dc4882.png" width="400">
+<img src = "https://user-images.githubusercontent.com/110169371/209474378-a113228a-15bc-4c05-8fe9-955000dc4882.png" width="400" height="400">
 
