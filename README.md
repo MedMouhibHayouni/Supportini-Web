@@ -12,5 +12,5 @@ Bootstrap
 
 ### Check your progress and get Feedback
 
-<img src = "https://user-images.githubusercontent.com/110169371/209474378-a113228a-15bc-4c05-8fe9-955000dc4882.png" width="400" height="400">
+<img src = "https://user-images.githubusercontent.com/110169371/209474378-a113228a-15bc-4c05-8fe9-955000dc4882.png" width="400" height="200">
 
