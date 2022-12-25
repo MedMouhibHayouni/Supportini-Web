@@ -1,0 +1,21 @@
+<div class="container p-4">
+  <div class=" col-md-12 col-sm-12" >
+    <div class="card">
+      <div class="body">
+
+        <form class="form-auth-small m-t-20 mb-3 " ngForm #categorieForm="ngForm">
+          <div class="row clearfix">
+
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <h6>Nom categorie</h6>
+                <input type="text" class="form-control round" name="nom" ngModel #nom="ngModel" placeholder="Nom Categorie" required >
+                <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+                  Nom de categorie Obligatoire!
+                </div>
+
+                <div class="row clearfix col-sm-12 m-5">
+                  <button type="submit" class="btn btn-round btn-success" (click)="createcategorie();showSuccess()"[disabled]="categorieForm.invalid"[routerLink]="'/liste-Produit' " >Valider</button>
+                  <button type="submit" class="btn btn-round btn-default" [routerLink]="'/liste-Produit'">Annuler</button>
+                </div>
+              </div></div></div></form></div></div></div></div>

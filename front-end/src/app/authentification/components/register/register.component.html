@@ -1,0 +1,99 @@
+<!--<div class="page-loader-wrapper">-->
+<!--  <div class="loader">-->
+<!--    <div class="bar1"></div>-->
+<!--    <div class="bar2"></div>-->
+<!--    <div class="bar3"></div>-->
+<!--    <div class="bar4"></div>-->
+<!--    <div class="bar5"></div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="pattern">
+<!--  <span class="red"></span>-->
+<!--  <span class="indigo"></span>-->
+<!--  <span class="blue"></span>-->
+  <span class="green"></span>
+<!--  <span class="orange"></span>-->
+</div>
+<div class="auth-main particles_js">
+  <div class="auth_div vivify popIn">
+    <div class="auth_brand">
+      <a class="navbar-brand" href="javascript:void(0);"><img src="../assets/images/SupportiniBrand.svg" width="50%" height="50%" class="d-inline-block align-top" alt=""></a>
+    </div>
+    <div class="card">
+      <div class="body">
+        <p class="lead">Inscription</p>
+        <form class="form-auth-small m-t-20 mb-3 "  ngForm #registerForm="ngForm">
+          <div class="form-group ">
+            <input type="text" class="form-control round" name="nom" ngModel #nom="ngModel" [(ngModel)]="user.nom" placeholder="Nom"  required>
+            <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+              Nom est obligatoire.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control round" name="prenom" placeholder="Prénom" ngModel [(ngModel)]="user.prenom" #prenom="ngModel" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="prenom.invalid&&prenom.touched&&prenom.hasError('required')">
+              Prénom est obligatoire.
+            </div>
+
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control round" name="email" placeholder="Adresse email" ngModel [(ngModel)]="user.email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="email.invalid&&email.touched&&email.hasError('required')">
+              Adresse Email est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="email.invalid&&email.touched&&email.hasError('pattern')">
+              merci de fournir une adresse email valide.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control round" name="password" ngModel #password="ngModel" [(ngModel)]="user.password" placeholder="Mot de Passe" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="password.invalid&&password.touched&&password.hasError('required')">
+              Mot de Passe est obligatoire.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control round" name="confirm_password" ngModel #confirm_password="ngModel" [(ngModel)]="user.cPassword" placeholder="Confirme Mot de Passe" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="confirm_password.invalid&&confirm_password.touched&&confirm_password.hasError('required')">
+              Confirmation Mot de Passe  est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="confirm_password.touched&&!validatorConfirmPassword()">
+              Confirmation Mot de Passe  doit égal mot de passe.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control round" name="phone" ngModel #phone="ngModel" placeholder="Numéro de Téléphone" [(ngModel)]="user.phone" pattern="[0-9]{8,8}" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="phone.invalid&&phone.touched&&phone.hasError('required')">
+              Numéro de téléphone est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="phone.invalid&&phone.touched&&phone.hasError('pattern')">
+              Numéro de téléphone doit étre  de longueur 8.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control round" name="cin" ngModel #cin="ngModel" placeholder="Cin"  [(ngModel)]="user.cin" pattern="[0-9]{8,8}" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="cin.invalid&&cin.touched&&cin.hasError('required')">
+              Cin est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="cin.invalid&&cin.touched&&cin.hasError('pattern')">
+              Cin doit étre de longueur 8.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-general btn-round btn-block"  (click)="register()" [disabled]="registerForm.invalid"  aria-label="Show an example snack-bar" >Confimer</button>
+
+        </form>
+<!--        <div class="separator-linethrough"><span>OR</span></div>-->
+<!--        <button class="btn btn-round btn-signin-social"><i class="fa fa-facebook-official facebook-color"></i> Inscription Facebook</button>-->
+<!--        <button class="btn btn-round btn-signin-social"><i class="fa fa-twitter twitter-color"></i> Sign in with Twitter</button>-->
+        <div class="bottom">
+
+        <span>Vous-avez un conmpte dans notre plateforme? <a [routerLink]="'/login'">Se Connecter</a></span>
+      </div>
+        <div class="text-left">
+          <span > <a [routerLink]="'/acceuil'">Retour</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="particles-js"></div>
+</div>

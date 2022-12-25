@@ -1,0 +1,90 @@
+<div class="row clearfix overflow-hidden" xmlns="http://www.w3.org/1999/html">
+  <div class="col-6 col-md-4">
+    <div class="card">
+      <div class="body">
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="icon-in-bg bg-indigo text-white text-large rounded-circle"><i class="fa fa-ruler-vertical"><i
+            class="fa fa-person"></i></i></div>
+          <div class="ml-4">
+            <span>Taille</span>
+            <h4 class="mb-0 font-weight-medium">{{suiviss?.taille}} cm</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6 col-md-4">
+    <div class="card">
+      <div class="body">
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="icon-in-bg bg-pink text-white text-large rounded-circle"><i class="fa fa-cake-candles"></i></div>
+          <div class="ml-4">
+            <span>Age</span>
+            <h4 class="mb-0 font-weight-medium">{{suiviss?.age}} Ans</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6 col-md-4">
+    <div class="card">
+      <div class="body">
+        <div class="d-flex align-items-center justify-content-center">
+          <div class="icon-in-bg bg-azura text-white rounded-circle text-large"><i class="fa fa-weight-scale"></i></div>
+          <div class="ml-4">
+            <span>Poids</span>
+            <h4 class="mb-0 font-weight-medium">{{suiviss?.poids}} Kg</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [type]="barChartType">
+    </canvas>
+  </div>
+</div>
+<ng-template #content let-modal class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+    <form>
+          <article>
+            <figure>
+              <img class="align-center" src="//localhost:8080/public/images/imageUser/{{coachImage}}">
+            </figure>
+            <div class="user-box">
+            <p>
+                {{feedbackByIdSuivi?.feedback}}
+              </p>
+            </div>
+            <div class="user-box">
+              <h1>
+                {{getedCoachData?.nom}} {{getedCoachData?.prenom}}
+              </h1>
+            </div>
+          </article>
+    </form>
+    </div>
+  </div>
+</ng-template>
+<hr/>
+
+
+
+
+
+
+
+
+
+

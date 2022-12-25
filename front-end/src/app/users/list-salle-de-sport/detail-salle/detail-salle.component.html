@@ -1,0 +1,355 @@
+
+<div class="container-fluid p-5 ">
+  <div class="row   ">
+    <div id="carouselExampleControls" class="carousel col-md-6 col-12 slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item"
+             *ngFor="let photo of imagesGym; let i = index"
+             [ngClass]="{'active': i == 0 }">
+          <img src="http://localhost:8080/public/images/salleDeSport/{{photo.imageVitrine}}"  class=" responsive d-block w-100  ">
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+      </div>
+      <!-- carousel controls omitted -->
+
+    <div class="col-md-6 col-12 ">    <!--    description-->
+      <ul class="list-group d-flex ">
+        <li class="list-group-item">
+          <small class="text-muted text-larger "  >Nom Salle De Sport: </small>
+          <p class="mb-0  " >{{gym.nomSalle}}</p>
+          <iframe class=" w-100 h-50"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.757473652379!2d8.
+          695635715621231!3d36.17245591048149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fba5ae0812500b%3A0x87be404701aaef06!
+          2sGolden%20Gym%20Le%20Kef!5e0!3m2!1sfr!2sin!4v1670438020841!5m2!1sfr!2sin"
+                  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </li>
+        <li class="list-group-item">
+          <p >{{gym.description}}</p>
+        </li>
+        <li class="list-group-item">
+          <small class="text-muted text-larger"  >Adress : </small>
+          <p  class="mb-0">{{gym.rue}},{{gym.ville}},{{gym.codePostal}}</p>
+        </li>
+      </ul>
+      <div class="col-md-4 col-12 justify-content-center">
+        <ul class="mt-3 list-unstyled d-flex ">
+          <li><a class="p-3" target="_blank" href="#"><i class="fa fa-facebook design-icone"></i></a></li>
+          <li><a class="p-3 " target="_blank" href="#"><i class="fa  fa-instagram design-icone"></i></a></li>
+          <li><a  class="p-3 " target="_blank" href="#"><i class="fa fa-youtube design-icone"></i></a></li>
+          <li><a  class="p-3 " target="_blank" href="#"><i class="fa fa-twitter design-icone"></i></a></li>
+        </ul>
+      </div>
+      <div class="row mt-md-5">
+        <div><span class="col-4  text-right mb-5 " >les prix d'abonnement DT </span></div>
+        <table class="table ">
+          <thead class="table-light ">
+          <tr >
+            <th scope="col">1 mois</th>
+            <th scope="col">3 mois</th>
+            <th scope="col">6 mois</th>
+            <th scope="col">12 mois</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">{{gym.prix}}</th>
+            <td>120</td>
+            <td>250</td>
+            <td>400</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-md-8 col-12 d-flex justify-content-end p-r-50  " *ngIf="user.fk_idRole==4 && user.id==gym.fk_idUser">
+          <button type="button" class="btn btn-primary btn-round" title="Edit" data-toggle="modal" data-target=".new-project-modal-salle" >Modifier</button>
+<!--          <button class="btn btn-success btn-round" type="button" (click)="updateGym()">Confirmer</button>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- code Upload images pour materiel  -->
+     <div class="block-header  ">
+          <div  class="row mt-md-5 justify-content-md-between ">
+       <div class=""><h2>Images Des Materiels</h2></div>
+       <div class="">
+         <button class="btn btn-primary" data-toggle="modal" data-target=".new-project-modal-ajout-materiel"*ngIf="user.fk_idRole==4 && user.id==gym.fk_idUser"><i class="fa-2x fa-solid fa-file-arrow-up"></i></button>
+         </div>
+    </div>
+  </div>
+
+    <!--  lightGallery-->
+<!--  <div class="row clearfix lightGallery">-->
+<!--    <lightgallery [settings]="settings" [onInit]="onInit" class=" row clearfix lightGallery">-->
+<!--      <div class="col-lg-3 col-md-6 m-b-30 rounded light-link gallery-item" *ngFor="let mat of equipment; let i = index "-->
+<!--         [attr.href]=" mat.imageVitrine">-->
+<!--        <div class="container">-->
+<!--          <div class="box">-->
+<!--            <div class="body">-->
+<!--              <div class="imgContainer">-->
+<!--                  <img class="w-100"  src="//localhost:8080/public/images/materielSalleDeSport/{{ mat.imageVitrine}}" alt=""/>-->
+<!--&lt;!&ndash;                  <img class="w-100"  src="../assets/images/sm/salle.jpg" alt=""/>&ndash;&gt;-->
+<!--              </div>-->
+<!--              <div class="content d-flex flex-column align-items-center justify-content-center">-->
+<!--                <div >-->
+<!--                  <h3 class="text-white fs-5">non salle{{mat.nomMaterial}}</h3>-->
+<!--                  <p class="fs-6 text-white"> description {{mat.description}}</p>-->
+<!--                  <p class="fs-6 text-white"> specialite{{mat.specialite}}</p>-->
+<!--                  <button class="btn btn-primary" data-t type="button"  data-toggle="modal" data-target=".project-modal-modifier-materiel" *ngIf="user.fk_idRole==4 && user.id==gym.fk_idUser" ><i class="fa-solid fa-plus"></i></button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </lightgallery>-->
+<!--  </div>-->
+
+<!--      lightGallery version 2-->
+  <div class="row clearfix lightGallery">
+
+      <div class="col-lg-3 col-md-6 m-b-30 rounded light-link gallery-item" *ngFor="let mat of equipment; let i = index "
+         [attr.href]=" mat.imageVitrine">
+        <div class="container">
+          <div class="box">
+            <div class="body">
+              <div class="imgContainer">
+                <img class="w-100"  src="//localhost:8080/public/images/materielSalleDeSport/{{ mat.imageVitrine}}" alt=""/>
+                <!--                  <img class="w-100"  src="../assets/images/sm/salle.jpg" alt=""/>-->
+              </div>
+              <div class="content d-flex flex-column align-items-center justify-content-center">
+                <div >
+                  <h3 class="text-white fs-5">non Material :{{mat.nomMaterial}}</h3>
+                  <p class="fs-6 text-white"> description :{{mat.description}}</p>
+                  <p class="fs-6 text-white"> specialite :{{mat.specialite}}</p>
+                  <button class="btn btn-primary" type="button" data-toggle="modal" (click)="editMateriel(mat)" data-target=".project-modal-modifier-materiel"*ngIf="user.fk_idRole==4 && user.id==gym.fk_idUser" ><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="container-fluid p-5 ">
+    <!--    modal modifier salle de sport -->
+  <div class="modal fade new-project-modal-salle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">  Modifier votre salle de sport
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <a>
+            <div class="body">
+
+              <div class="row ">
+                <form class="form-auth-small m-t-20 mb-3 " ngForm #salleForm="ngForm">
+                  <div class="container-fluid">
+                    <div class="block-header">
+                      <div class="row clearfix">
+                        <div class="col-md-12  ">
+                          <input type="file" class="dropify" (change)="onFileChanged($event)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row clearfix">
+                      <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <input [(ngModel)]="gym.nomSalle" type="text" class="form-control"  name="nomSalle" ngModel #nom="ngModel" placeholder="nomSalle"  required >
+                          <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+                            Nom salle est obligatoire.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <input [(ngModel)]="gym.prix" type="number" class="form-control" name="prix" ngModel #prix="ngModel" placeholder="prix" pattern="[1-9][0-9]{0,}"  required>
+                          <div class="invalid-feedback d-block text-left" *ngIf="prix.invalid&&prix.touched&&prix.hasError('required')">
+                            Montant Mensuel est obligatoire.
+                          </div>
+                          <div class="invalid-feedback d-block text-left" *ngIf="prix.errors?.['pattern']">
+                            montant doit etre positif.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <input [(ngModel)]="gym.rue" type="text" class="form-control"  name="rue" ngModel #rue="ngModel" placeholder="rue" required>
+                          <div class="invalid-feedback d-block text-left" *ngIf="rue.invalid&&rue.touched&&rue.hasError('required')">
+                            rue est obligatoire.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <input [(ngModel)]="gym.ville" type="text" class="form-control"  name="ville" ngModel #ville="ngModel"  placeholder="ville" required>
+                          <div class="invalid-feedback d-block text-left" *ngIf="ville.invalid&&ville.touched&&ville.hasError('required')">
+                            Ville est obligatoire.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                          <input [(ngModel)]="gym.codePostal" type="number" class="form-control"  name="postal" ngModel #postal="ngModel" placeholder="codePostal" pattern="[0-9]{4,4}"  required>
+                          <div class="invalid-feedback d-block text-left" *ngIf="postal.invalid&&postal.touched&&postal.hasError('required')">
+                            Code postal est obligatoire.
+                          </div>
+                          <div class="invalid-feedback d-block text-left" *ngIf="postal.errors?.['pattern']">
+                            Code postal de longueur 4.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12">
+                        <div class="form-group">
+                          <textarea [(ngModel)]="gym.description" rows="4" type="text" class="form-control" name="description" ngModel #description="ngModel" placeholder="descriprtion" required></textarea>
+                          <div class="invalid-feedback d-block text-left" *ngIf="description.invalid&&description.touched&&description.hasError('required')">
+                            Description est obligatoire.
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </div>   <div class="modal-footer">
+                  <button type="button" class="btn btn-round btn-default" data-dismiss="modal" >Annuler</button>
+                  <button type="button" class="btn btn-round btn-success" data-dismiss="modal"  [disabled]="salleForm.invalid"(click)="updateGym();onUploadImage(gym.id)">Modifier</button>
+                </div>
+
+                </form>
+              </div>
+            </div>
+        </a>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid p-5 ">
+    <!--    modal ajouter materiel -->
+    <div class="modal fade new-project-modal-ajout-materiel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalAjouyer">Ajouter votre materiel</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body " ngForm #materielForm="ngForm">
+                <div class="container-fluid">
+                  <div class="block-header">
+                    <div class="row clearfix">
+                      <div class="col-md-12  ">
+                        <input    type="file" class="dropify" (change)="onFileChanged($event)" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row clearfix">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <input id="nomEquipement" type="text"  class="form-control" name="nom" ngModel #nom="ngModel" placeholder="Nom Materiel De Sport" required>
+                        <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+                          Nom Materiel est obligatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <input id="discipline" type="text" class="form-control" name="discipline" ngModel #discipline="ngModel" placeholder="discipline" required>
+                        <div class="invalid-feedback d-block text-left" *ngIf="discipline.invalid&&discipline.touched&&discipline.hasError('required')">
+                          discipline est obligatoire.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                      <div class="form-group">
+                        <textarea id="description" rows="4" type="text" class="form-control" placeholder="Description"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-round btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-round btn-success" data-dismiss="modal" [disabled]="materielForm.invalid" (click)="addEquipementGym(gym.id)">Confirmer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
+  <!--    modal modifier materiel -->
+  <div class="modal fade project-modal-modifier-materiel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalModifier">Modifier votre materiel</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body " ngForm #FormMaterielModifier="ngForm">
+          <div class="container-fluid">
+            <div class="block-header">
+              <div class="row clearfix">
+                <div class="col-md-12  ">
+                  <input type="file" class="dropify" >
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                  <input [(ngModel)]="equipments.nomMaterial" type="text"  class="form-control" name="nomMaterial" ngModel #NomMateriel="ngModel" placeholder="Nom Materiel De Sport" required>
+                  <div class="invalid-feedback d-block text-left" *ngIf="NomMateriel.invalid&&NomMateriel.touched&&NomMateriel.hasError('required')">
+                    Nom Materiel est obligatoire.
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                  <input  [(ngModel)]="equipments.specialite"   type="text"  class="form-control" name="discipline" ngModel #disciplineMateriel="ngModel" placeholder="discipline" required>
+                  <div class="invalid-feedback d-block text-left" *ngIf="disciplineMateriel.invalid&&disciplineMateriel.touched&&disciplineMateriel.hasError('required')">
+                    discipline est obligatoire.
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                  <textarea  [(ngModel)]="equipments.description"  name="Description" rows="4" type="text" class="form-control" ngModel #descriptionMateriel="ngModel" placeholder="Description"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-round btn-default" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-round btn-success" data-dismiss="modal"  (click)="updateEquipmentGym()"  [disabled]="FormMaterielModifier.invalid">Confirmer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

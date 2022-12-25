@@ -1,0 +1,94 @@
+<div class="pattern">
+  <!--  <span class="red"></span>-->
+  <!--  <span class="indigo"></span>-->
+  <!--  <span class="blue"></span>-->
+
+    <span class="orange"></span>
+</div>
+<div class="auth-main particles_js">
+  <div class="auth_div vivify popIn">
+    <div class="auth_brand">
+      <a class="navbar-brand" href="javascript:void(0);"><img src="../assets/images/SupportiniBrand.svg" width="30" height="30" class="d-inline-block align-top" alt=""><span>upportini</span></a>
+    </div>
+    <div  class="card">
+      <div class="body">
+        <p class="lead">Information Personnel</p>
+<!--        trainer information personnel -->
+        <form *ngIf="user.fk_idRole==2" class="form-auth-small m-t-20 mb-3 "  ngForm #TrainerInfo="ngForm">
+          <div class="form-group ">
+            <input type="number" class="form-control round" name="age" ngModel #age="ngModel" [(ngModel)]="profil.age" placeholder="Age" pattern="[0-9]{1,2}" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="age.invalid&&age.touched&&age.hasError('required')">
+              Age est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="age.invalid&&age.touched&&age.hasError('pattern')">
+              Age  invalide.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control round" name="taille" placeholder="Taille en cm" ngModel [(ngModel)]="profil.taille" #taille="ngModel" pattern="[0-9]{3,3}" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="taille.invalid&&taille.touched&&taille.hasError('required')">
+              Taille est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="taille.invalid&&taille.touched&&taille.hasError('pattern')">
+              Taille  invalide.
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control round" name="poids" placeholder="Poids en Kg" ngModel #poids="ngModel" [(ngModel)]="profil.poids" pattern="[0-9]{2,3}" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="poids.invalid&&poids.touched&&poids.hasError('required')">
+              Poids est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="poids.invalid&&poids.touched&&poids.hasError('pattern')">
+              Poids invalide.
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="fancy-radio custom-color-orange"><input name="gender3" value="male" type="radio" [(ngModel)]="profil.sexe" ><span><i></i>Homme</span></label>
+            <label class="fancy-radio custom-color-orange"><input name="gender3" value="female" [(ngModel)]="profil.sexe" type="radio"><span><i></i>Femme</span></label>
+          </div>
+
+<!--          <div class="form-group">-->
+<!--            <input type="number" class="form-control round" name="phone" ngModel #phone="ngModel" placeholder="Numéro de Téléphone"  pattern="[0-9]{8,8}" required>-->
+<!--            <div class="invalid-feedbackService d-block text-left" *ngIf="phone.invalid&&phone.touched&&phone.hasError('required')">-->
+<!--              Numéro de téléphone est obligatoire.-->
+<!--            </div>-->
+<!--            <div class="invalid-feedbackService d-block text-left" *ngIf="phone.invalid&&phone.touched&&phone.hasError('pattern')">-->
+<!--              Numéro de téléphone doit étre  de longueur 8.-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <button type="submit" class="btn btn-general btn-round btn-block"  (click)="addInformation(1)" [disabled]="TrainerInfo.invalid"  aria-label="Show an example snack-bar" >Confimer</button>
+
+        </form>
+<!--      coach information personnel -->
+
+        <form *ngIf="user.fk_idRole==3" class="form-auth-small m-t-20 mb-3 p-2"  ngForm #coachInfo="ngForm">
+          <div class="fancy-checkbox mb-3 ">
+            <span> Vos Spécialités: </span>
+          </div>
+          <div class="form-group d-flex justify-content-around flex-wrap ">
+
+            <div class="fancy-checkbox">
+              <label><input type="checkbox" value="musculation" (change)="onCheckboxChange($event)"name="Musculation" ><span>Musculation</span></label>
+            </div>
+            <div class="fancy-checkbox">
+              <label><input type="checkbox" value="zomba" (change)="onCheckboxChange($event)"  name="Zomba" ><span>Zomba</span></label>
+            </div>
+            <div class="fancy-checkbox">
+              <label><input type="checkbox" value="gymnas" (change)="onCheckboxChange($event)"  name="Gymnastique"  ><span>Gymnastique</span></label>
+            </div>
+            <div class="fancy-checkbox">
+              <label><input type="checkbox" value="autre" (change)="onCheckboxChange($event)"  name="Autre" ><span>autres ..</span></label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-general btn-round btn-block"  (click)="addInformation(0)"   aria-label="Show an example snack-bar" >Confimer</button>
+
+        </form>
+      </div>
+    </div>
+
+
+  <div id="particles-js"></div>
+</div>
+</div>

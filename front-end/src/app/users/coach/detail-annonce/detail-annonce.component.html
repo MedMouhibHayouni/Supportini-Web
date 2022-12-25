@@ -1,0 +1,129 @@
+<!--<div>-->
+<!--  <ngx-qrcode-->
+<!-- -->
+<!--    [elementType]="elementType"-->
+<!--    [value]="value"-->
+<!--    cssClass="aclass ">-->
+<!--  </ngx-qrcode>-->
+<!--</div>-->
+
+
+
+<div *ngIf="user.fk_idRole==3 && oneannonce.fk_idcoach==idCoach">
+  <button type="button"  class="btn  btnColor" routerLink="/liste-annonce" (click)="supprimerAnnonce()">supprimer</button>
+  <button type="button" class="btn  btnColor" routerLink="/modifierannonce/{{oneannonce.id}}" >Modifier</button>
+  <button type="button" class="btn  btnColor" routerLink="/ajouter-regime/{{oneannonce.id}}" >Ajouter Un Regime</button>
+</div>
+
+<div class="modal" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier votre annonce</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <a>
+        <app-modifier-annonce></app-modifier-annonce>
+        </a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Annuler</button>
+        <button type="button" class="btn btn-primary">Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------------------------------------------------------------------------------------------->
+<div class=" container-fluid p-4 ">
+
+  <!--  div 1 image et info generale-->
+  <div  class="row "  >
+    <!--image-->
+    <div class="col-6 " >
+      <img class="d-block w-100" src="http://localhost:8080/public/images/annonce/{{oneannonce.image}}" alt="First slide">
+    </div>
+    <!--profile-->
+    <div class="card social col-6 d-flex " >
+      <div class="profile-header d-flex justify-content-between justify-content-center">
+        <div class="d-flex">
+          <div class="mr-3">
+            <img src="http://localhost:8080/public/images/imageUser/{{user.image_name}}" class="rounded" alt="">
+          </div>
+          <div class="details">
+            <a routerLink="/coach-profile/{{coachInfo.id}}" style="color: white" ><h5 class="mb-0"> {{coachInfo.nom}} {{coachInfo.prenom}}</h5></a>
+            <span class="text-light"> {{coachInfo.phone}}</span>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+      <!--information-->
+      <ul class="list-group d-flex ">
+        <li class="list-group-item">
+          <small class="text-muted">Title: </small>
+          <p class="mb-0">{{oneannonce.titre}}</p>
+        </li>
+        <li class="list-group-item">
+          <small class="text-muted">Discipline: </small>
+          <p  class="mb-0">{{oneannonce.discipline}}</p>
+        </li>
+        <li class="list-group-item">
+          <small class="text-muted">Type:</small>
+          <p  class="mb-0">{{oneannonce.type}}</p>
+        </li>
+        <li class="list-group-item">
+          <small class="text-muted">Prix: </small>
+          <p  class="mb-0">{{oneannonce.prix}}</p>
+        </li>
+        <li class="list-group-item">
+          <small class="text-muted">Adresse : </small>
+          <p  class="mb-0">{{oneannonce.rue}},{{oneannonce.codePostal}},{{oneannonce.ville}}</p>
+        </li>
+        <li class="list-group-item">
+          <small class="text-muted">Periode : </small>
+          <p  class="mb-0">{{oneannonce.dateDebut}}  jusqu'a  {{oneannonce.dateDebut}}</p>
+        </li>
+      </ul>
+    </div>
+
+
+
+
+
+  </div >
+
+
+
+  <!--   desciption -->
+
+  <div class="list-group-item">
+    <small class="text-muted">Description: </small>
+    <p  class="mb-0">{{oneannonce.description}}</p>
+  </div>
+
+
+
+  <div class="text-center m-3" >
+    <button type="submit" class="btn  btnColor" (click)="participerAndSuivi()" [routerLink]="'/suiviTrainer'" *ngIf="oneannonce.fk_idcoach!=idCoach" >Participer</button>
+  </div>
+
+
+</div>
+
+ <div *ngIf="user.fk_idRole==3 ">
+   <app-list-trainer-annonce></app-list-trainer-annonce>
+ </div>
+
+
+<div>
+  <app-listregime></app-listregime>
+</div>
+
+
+

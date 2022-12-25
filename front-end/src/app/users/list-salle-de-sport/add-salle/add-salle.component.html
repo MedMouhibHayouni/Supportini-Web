@@ -1,0 +1,151 @@
+
+<div class=" col-md-12 col-sm-12">
+  <div class="card">
+    <div class="body">
+        <h6 >Ajouter votre salle de sport</h6>
+
+      <form class="form-auth-small m-t-20 mb-3 " ngForm #salleForm="ngForm">
+      <div class="row clearfix">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input [(ngModel)]="gym.nomSalle" #nomSalleInput  type="text" class="form-control round" name="nomSalle" ngModel #nom="ngModel"  placeholder="Nom Salle De Sport" required  >
+            <input #idinput   type="hidden" [value]="iduser" >
+
+            <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+              Nom salle est obligatoire.
+            </div>
+          </div>
+          <h6 >Votre Adress</h6>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+
+            <input  #numTelinput [(ngModel)]="gym.numTel" type="number" class="form-control round" name="numTel" ngModel #tel="ngModel" placeholder="Numero Telephone" pattern="[0-9]{8,8}"  required>
+            <div class="invalid-feedback d-block text-left" *ngIf="tel.invalid&&tel.touched&&tel.hasError('required')">
+              Numero Telephone est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="tel.errors?.['pattern']">
+              Numero Telephone doit de longueur 8.
+            </div>
+          </div>
+          <h6 >Montant Abonnement</h6>
+        </div>
+      </div>
+      <div class="row clearfix">
+
+        <div class="col-sm-3">
+          <div class="form-group">
+
+            <input  #villeinput [(ngModel)]="gym.ville" type="text" class="form-control round" name="ville" ngModel #ville="ngModel"  placeholder="Ville" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="ville.invalid&&ville.touched&&ville.hasError('required')">
+              Ville est obligatoire.
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+
+            <input #rueinput [(ngModel)]="gym.rue" type="text" class="form-control " name="rue" ngModel #rue="ngModel" placeholder="Rue"  required>
+            <div class="invalid-feedback d-block text-left" *ngIf="rue.invalid&&rue.touched&&rue.hasError('required')">
+              rue est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+
+            <input #prixinput  [(ngModel)]="gym.prix" type="number" class="form-control " name="prix" ngModel #prix="ngModel" [(ngModel)]="montant" placeholder="Montant Mensuel" pattern="[1-9][0-9]{0,}"  required>
+            <div class="invalid-feedback d-block text-left" *ngIf="prix.invalid&&prix.touched&&prix.hasError('required')">
+              Montant Mensuel est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="prix.errors?.['pattern']">
+              montant doit etre positif.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+
+            <input #postalinput   [(ngModel)]="gym.codePostal" type="number" class="form-control round" name="postal" ngModel #postal="ngModel" placeholder="Code Postal" pattern="[0-9]{4,4}"  required>
+            <div class="invalid-feedback d-block text-left" *ngIf="postal.invalid&&postal.touched&&postal.hasError('required')">
+              Code postal est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="postal.errors?.['pattern']">
+            Code postal de longueur 4.
+          </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 mb-2 ">
+          <mat-slider color="warn" class="w-100"  thumbLabel [displayWith]="formatLabel" min="1" max="100" step="1"  aria-label="units" name="slide_pr" [(ngModel)]="value"></mat-slider>
+          <div class="row" *ngIf="montant">
+            <div class="col-md-3 col-12"><span>prix pour 1 mois: {{montant-((value *montant )/100)}} DT</span></div>
+            <div class="col-md-3 col-12"><span>prix pour 3 mois: {{(montant*3)-((value *(montant*3) )/100)}} DT</span></div>
+            <div class="col-md-3 col-12"><span>prix pour 6 mois: {{(montant*6)-((value *(montant*6) )/100)}} DT</span></div>
+            <div class="col-md-3 col-12"><span>prix pour 12 mois: {{(montant*12)-((value *(montant*12) )/100)}} DT</span></div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-12  ">
+          <input  multiple="multiple"  type="file" class="dropify" (change)="selectFiles($event)" >
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group mt-3">
+            <textarea  #descriptionInput    [(ngModel)]="gym.description" rows="4" class="form-control " name="description" ngModel #description="ngModel" placeholder="description..." required></textarea>
+            <div class="invalid-feedback d-block text-left" *ngIf="description.invalid&&description.touched&&description.hasError('required')">
+              Description est obligatoire.
+            </div>
+
+          </div>
+        </div>
+        <div class="row clearfix col-md-12 ">
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-globe"></i></span>
+              </div>
+                <input #urlInput [(ngModel)]="gym.url" name="url"  type="text" class="form-control" placeholder="http://">
+            </div>
+          </div>
+<!--          <div class="col-md-6">-->
+<!--            <div class="input-group mb-3">-->
+<!--              <div class="input-group-prepend">-->
+<!--                <span class="input-group-text"><i class="fa fa-facebook"></i></span>-->
+<!--              </div>-->
+<!--              <input type="text" class="form-control" placeholder="Facebook">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6">-->
+<!--            <div class="input-group mb-3">-->
+<!--              <div class="input-group-prepend">-->
+<!--                <span class="input-group-text"><i class="fa fa-youtube"></i></span>-->
+<!--              </div>-->
+<!--              <input type="text" class="form-control" placeholder="Youtube">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6">-->
+<!--            <div class="input-group mb-3">-->
+<!--              <div class="input-group-prepend">-->
+<!--                <span class="input-group-text"><i class="fa fa-instagram"></i></span>-->
+<!--              </div>-->
+<!--              <input type="text" class="form-control" placeholder="Instagram">-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+
+
+        <div class="row clearfix col-sm-12 m-5">
+          <button type="submit" class="btn btn-round btn-success"  (click)="createGym()" [disabled]="salleForm.invalid">Valider</button>
+          <button type="submit" class="btn btn-round btn-default" [routerLink]="'/list-salle-de-sport'">Annuler</button>
+        </div>
+      </form>
+        </div>
+        </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,288 @@
+  <div class="row clearfix m-0">
+  <div class="col-lg-4 col-md-12">
+    <div class="card">
+      <div class="header">
+        <h2>Information</h2>
+      </div>
+      <div class="body">
+        <div class="media mb-0">
+          <img class="rounded mr-3 w-25"  src="http://localhost:8080/public/images/imageUser/{{user.image_name}}" alt="">
+          <div class="media-body">
+            <h5 class="m-0">{{user.nom}} {{user.prenom}}  </h5>
+            <p class="text-muted mb-0" *ngIf="user.fk_idRole==1">Administrateur</p>
+            <p class="text-muted mb-0" *ngIf="user.fk_idRole==2">Entrainé</p>
+            <p class="text-muted mb-0" *ngIf="user.fk_idRole==3">Entraineur</p>
+            <p class="text-muted mb-0" *ngIf="user.fk_idRole==4">Propriétaire Salle de Sport</p>
+          </div>
+          <div>
+              <button class="btn btn-success" data-toggle="modal" data-target=".new-project-modal" title="Changer votre photo de profil"><i class="fa-solid   fa-2x fa-file-circle-plus"></i></button>
+            <button class="btn btn-primary  ml-2" title="Ajouter une autre spécialité" *ngIf="user.fk_idRole==3" (click)="toggle=!toggle" ><i class="fa-solid fa-2x fa-clipboard-check"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--    modal image -->
+    <div class="modal fade new-project-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter une photo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+<!--            <div class="input-group mb-3">-->
+<!--              <input type="text" class="form-control" placeholder="Project Name">-->
+<!--            </div>-->
+            <input type="file" class="dropify"  (change)="onFileChanged($event)">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-round btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-round btn-success" data-dismiss="modal" (click)="onUpload()">Confirmer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--    card setting information personnel-->
+    <div *ngIf="toggle" class="card">
+      <div class="header">
+        <h2>Information Personnel</h2>
+      </div>
+      <div class="body">
+
+        <div class="row clearfix">
+          <form  class="form-auth-small m-t-20 mb-3 p-2" >
+            <div class="fancy-checkbox mb-3 ">
+              <span> Vos Spécialités: </span>
+            </div>
+            <div class="form-group d-flex justify-content-around flex-wrap ">
+
+              <div class="fancy-checkbox">
+                <label><input type="checkbox" value="musculation" (change)="onCheckboxChange($event)"name="Musculation" ><span>Musculation</span></label>
+              </div>
+              <div class="fancy-checkbox">
+                <label><input type="checkbox" value="zomba" (change)="onCheckboxChange($event)"  name="Zomba" ><span>Zomba</span></label>
+              </div>
+              <div class="fancy-checkbox">
+                <label><input type="checkbox" value="gymnas" (change)="onCheckboxChange($event)"  name="Gymnastique"  ><span>Gymnastique</span></label>
+              </div>
+              <div class="fancy-checkbox">
+                <label><input type="checkbox" value="autre" (change)="onCheckboxChange($event)"  name="Autre" ><span>autres ..</span></label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <button type="button" class="btn btn-round btn-success"(click)="updateSpecialite()">Confirmer</button> &nbsp;&nbsp;
+        <button type="button" class="btn btn-round btn-default" >Annuler</button>
+      </div>
+    </div>
+<!--    <div class="card">-->
+<!--      <ul class="list-group">-->
+<!--        <li class="list-group-item">-->
+<!--          <small class="text-muted">Title: </small>-->
+<!--          <p class="mb-0">FaceBook Inc.</p>-->
+<!--        </li>-->
+<!--        <li class="list-group-item">-->
+<!--          <small class="text-muted">Address: </small>-->
+<!--          <p class="mb-0">44 Shirley Ave. IL 60185</p>-->
+<!--        </li>-->
+<!--        <li class="list-group-item">-->
+<!--          <small class="text-muted">Date: </small>-->
+<!--          <p class="mb-0">07 Feb 2019</p>-->
+<!--        </li>-->
+<!--        <li class="list-group-item">-->
+<!--          <div>In Progress</div>-->
+<!--          <div class="progress progress-xxs progress-transparent custom-color-green mb-3 mt-3">-->
+<!--            <div class="progress-bar" data-transitiongoal="67" aria-valuenow="67" style="width: 67%;"></div>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--    <div class="card">-->
+<!--      <ul class="list-group mb-3 tp-setting">-->
+<!--        <li class="list-group-item">-->
+<!--          Notifications-->
+<!--          <div class="float-right">-->
+<!--            <label class="switch">-->
+<!--              <input type="checkbox" checked>-->
+<!--              <span class="slider round"></span>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="list-group-item">-->
+<!--          Messages-->
+<!--          <div class="float-right">-->
+<!--            <label class="switch">-->
+<!--              <input type="checkbox">-->
+<!--              <span class="slider round" checked></span>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="list-group-item">-->
+<!--          Message email-->
+<!--          <div class="float-right">-->
+<!--            <label class="switch">-->
+<!--              <input type="checkbox">-->
+<!--              <span class="slider round"></span>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--        <li class="list-group-item">-->
+<!--          Applicant email-->
+<!--          <div class="float-right">-->
+<!--            <label class="switch">-->
+<!--              <input type="checkbox">-->
+<!--              <span class="slider round"></span>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+  </div>
+  <div class="col-lg-8 col-md-12">
+    <div class="card">
+      <div class="header">
+        <h2>Information de Base</h2>
+      </div>
+      <div class="body">
+
+        <div class="row clearfix" ngForm #infoBaseProfil="ngForm">
+
+          <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+              <input type="text" class="form-control" ngModel #nom="ngModel" name="nom" placeholder="Nom" [(ngModel)]="user.nom" required>
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+              Nom est obligatoire
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+              <input type="text" class="form-control" ngModel #prenom="ngModel" name="prenom" [(ngModel)]="user.prenom" placeholder="Prénom" required>
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="prenom.invalid&&prenom.touched&&prenom.hasError('required')">
+              Prénom est obligatoire
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <div class="form-group">
+              <input type="number" class="form-control " name="phone" ngModel #phone="ngModel" [(ngModel)]="user.phone" placeholder="Numéro de Téléphone"  pattern="[0-9]{8,8}" required >
+              <div class="invalid-feedback d-block text-left" *ngIf="phone.invalid&&phone.touched&&phone.hasError('required')">
+                Numéro de téléphone est obligatoire.
+              </div>
+              <div class="invalid-feedback d-block text-left" *ngIf="phone.invalid&&phone.touched&&phone.hasError('pattern')">
+                Numéro de téléphone doit étre  de longueur 8.
+              </div>
+            </div>
+          </div>
+<!--          <div class="col-lg-4 col-md-12">-->
+<!--            <div class="form-group">-->
+<!--              <select class="form-control">-->
+<!--                <option value="">&#45;&#45; Select Gander &#45;&#45;</option>-->
+<!--                <option value="AF">Male</option>-->
+<!--                <option value="AX">Female</option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-lg-4 col-md-12">-->
+<!--            <div class="form-group">-->
+<!--              <div class="input-group">-->
+<!--                <div class="input-group-prepend">-->
+<!--                  <span class="input-group-text"><i class="icon-calendar"></i></span>-->
+<!--                </div>-->
+<!--                <input data-provide="datepicker" data-date-end-date="0d" data-date-autoclose="true" class="form-control" placeholder="Date de naissance">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-lg-4 col-md-12">-->
+<!--            <div class="form-group">-->
+<!--              <div class="input-group">-->
+<!--                -->
+<!--                <input data-provide="datepicker" data-date-end-date="0d" data-date-autoclose="true" class="form-control" placeholder="Date de naissance">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-lg-4 col-md-12">-->
+<!--            <div class="form-group">-->
+<!--              <div class="input-group">-->
+<!--                <div class="input-group-prepend">-->
+<!--                  <span class="input-group-text"><i class="icon-globe"></i></span>-->
+<!--                </div>-->
+<!--                <input type="text" class="form-control" placeholder="http://">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-lg-4 col-md-12">-->
+<!--            <div class="form-group">-->
+<!--              <input type="text" class="form-control" placeholder="State/Province">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-lg-4 col-md-12">-->
+<!--            <div class="form-group">-->
+<!--              <input type="text" class="form-control" placeholder="City">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-lg-12 col-md-12">-->
+<!--            <div class="form-group">-->
+<!--              <textarea rows="4" type="text" class="form-control" placeholder="Address"></textarea>-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+        <button type="button" class="btn btn-round btn-success" (click)="updateUser()" [disabled]="infoBaseProfil.invalid">Confirmer</button> &nbsp;&nbsp;
+        <button type="button" class="btn btn-round btn-default">Annuler</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="header">
+        <h2>Information de Securité</h2>
+      </div>
+      <div class="body" ngForm #settingProfil="ngForm">
+        <div class="row clearfix">
+
+          <div class="col-lg-4 col-md-12">
+            <div class="form-group" >
+              <input type="email" class="form-control" name="email" placeholder="Adresse Email" ngModel #email="ngModel" [(ngModel)]="user.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+              <div class="invalid-feedback d-block text-left" *ngIf="email.invalid&&email.touched&&email.hasError('patter')&&email.hasError('required')">
+                merci de fournir une adresse email valide.
+              </div>
+              <div class="invalid-feedback d-block text-left" *ngIf="email.invalid&&email.touched&&email.hasError('required')">
+               Adresse email est obligatoire.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12">
+            <hr>
+            <h6>Changer Mot de Passe</h6>
+            <div class="form-group">
+              <input type="password" class="form-control" name="actuel_password" placeholder="Actuel Mot de Passe" [(ngModel)]="actPwd" >
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="new_password" ngModel #new_password="ngModel" placeholder="Nouveau Mot de Passe" [(ngModel)]="newPwd" required>
+              <div class="invalid-feedback d-block text-left" *ngIf="new_password.touched&&!validatorNewPassword()">
+                Nouveau Mot de Passe ne doit pas égal ancien mot de passe.
+              </div>
+              <div class="invalid-feedback d-block text-left" *ngIf="new_password.touched&&new_password.hasError('required')">
+                Nouveau Mot de Passe  est obligatoire.
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="confirm_password" ngModel #confirm_password="ngModel"  placeholder="Confirme Nouveau Mot de Passe" [(ngModel)]="confirm_pwd" required>
+              <div class="invalid-feedback d-block text-left" *ngIf="confirm_password.touched&&!validatorConfirmPassword()&&confirm_password.hasError('required')">
+                Confirmation Mot de Passe  doit égal mot de passe.
+              </div>
+              <div class="invalid-feedback d-block text-left" *ngIf="confirm_password.touched&&confirm_password.hasError('required')">
+                Confirmation Mot de Passe  est obligatoire.
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-round btn-success" (click)="updateInfoSecurty()" [disabled]="settingProfil.invalid">Confirmer</button> &nbsp;&nbsp;
+        <button type="button" class="btn btn-round btn-default">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+

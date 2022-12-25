@@ -1,0 +1,150 @@
+<!-- filter-->
+<div class="row clearfix">
+  <div class="col-12">
+    <form class="card" action="" method="post">
+      <div class="body">
+        <div class="row">
+
+            <!--     prix     -->
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="form-group">
+
+              <select class="form-control show-tick" (change)="filterPrix($event)">
+
+                <option selected  >Trier par Prix</option>
+                <option value="1">moin cher -> plus cher</option>
+                <option value="2">plus cher -> moin cher  </option>
+
+              </select>
+            </div>
+          </div>
+                      <!--ville-->
+          <div class="col-lg-2 col-md-4 col-sm-6" (change)="filterville($event)">
+            <div class="form-group">
+
+              <select  class="form-control show-tick"  >
+
+                <option selected value="">Trouver par ville</option>
+
+                <option value="ariana">	Ariana</option>
+                <option value="beja">Beja</option>
+                <option value="	benarous">	Ben Arous</option>
+                <option value="bizerte">Bizerte</option>
+                <option value="gabes">	Gabès </option>
+                <option value="gafsa">	Gafsa </option>
+                <option value="jendouba">Jendouba </option>
+                <option value="kairouan"> Kairouan</option>
+                <option value="kasserine"> Kasserine</option>
+                <option value="kebili"> Kébili</option>
+                <option value="kef"> Le Kef</option>
+                <option value="mahdia">Mahdia </option>
+                <option value="manouba"> La Manouba</option>
+                <option value="medenine">Médenine </option>
+                <option value="monastir"> Monastir</option>
+                <option value="Nabeul">Nabeul </option>
+                <option value="Sfax"> 	Sfax</option>
+                <option value="sidibouzid"> Sidi Bouzid</option>
+                <option value="siliana "> 	Siliana</option>
+                <option value="sousse">	Sousse </option>
+                <option value="tataouine "> Tataouine</option>
+                <option value="tozeur"> 	Tozeur</option>
+                <option value="tunis"> Tunis</option>
+                <option value="zaghouan">Zaghouan </option>
+              </select>
+            </div>
+          </div>
+                        <!-- type-->
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="form-group">
+              <select   class="form-control show-tick" (change)="filterType($event)">
+                <option selected>Type</option>
+                <option value="domicile">a domicile</option>
+                <option value="salle">Salle de Sport</option>
+                <option value="entreprise">Entreprise</option>
+                <option value="espace">Espace public</option>
+              </select>
+            </div>
+          </div>
+                    <!-- discipline-->
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="form-group">
+              <select  class="form-control show-tick" (change)="filterDiscipline($event)">
+                <option selected>Discipline</option>
+                <option value="natation">natation</option>
+                <option value="foot">foot</option>
+                <option value="equitation">equitation</option>
+                <option value="gymnastique">gymnastique</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="col-md-4 col-lg-2 col-12 d-md-flex justify-content-md-around">
+            <div class="form-group  ">
+
+
+              <button type="submit" class="btn  btn-block btnColor" (click)="filterAnnonce()">Chercher</button>
+
+            </div>
+            <div class="form-group" *ngIf="user.fk_idRole==3">
+
+              <button type="submit" class="btn  btn-general"   [routerLink]="'/mes-annonces'" >Mes annonces</button>
+            </div>
+            <div class="form-group">
+
+              <button type="submit" class="btn  btn-block btnColor" *ngIf="user.fk_idRole==3" routerLink="/ajouter-annonce">Proposer Vos Seances</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+<div class="container-fluid d-flex flex-wrap justify-content-around">
+  <div   *ngFor="let annonce of listAnnonces" class="col-3">
+
+
+    <div  routerLink="/detail-annonce/{{annonce.id}}">
+
+      <app-item-annonce [annonce]="annonce"></app-item-annonce>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+
+<div class="auth-main particles_js" *ngIf="listAnnonces.length==0">
+  <div class="auth_div vivify popIn">
+    <div class="auth_brand">
+      <a class="navbar-brand" href="javascript:void(0);"><img src="../../../assets/images/icon.svg" width="30" height="30" class="d-inline-block align-top mr-2" alt="">Supportini</a>
+    </div>
+    <div class="card page-400">
+      <div class="body">
+        <p class="lead mb-3"><span class="text">Oops! </span></p>
+        <p>Desolé il n'existe pas une offre compatible à votre choix avec ces critères, s'il vous plaît consulter notre liste complète.</p>
+        <div class="margin-top-30">
+          <a routerLink="/acceuil" class="btn btn-round btn-default btn-block"><i class="fa fa-arrow-left"></i> <span>Go Back</span></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="particles-js">
+
+  </div>
+</div>
+
+
+<!--<div *ngIf="listAnnonces.length==0">-->
+<!--  <h1> desolé il n'ya pas des annonces de ce choix-->
+<!--  </h1>-->
+<!--</div>-->

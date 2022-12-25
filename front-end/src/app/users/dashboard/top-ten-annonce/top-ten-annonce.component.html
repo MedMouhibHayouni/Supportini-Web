@@ -1,0 +1,21 @@
+
+
+<div class=" card d-flex flex-wrap justify-content-around  " *ngIf="listAnnonces.length!=0">
+
+  <div  class=" body col-md-9 col-12  d-flex flex-wrap  ">
+    <div   *ngFor="let annonce of listAnnonces" class="col-4 ">
+
+
+      <div  routerLink="/detail-annonce/{{annonce.id}}">
+
+        <app-item-annonce [annonce]="annonce"></app-item-annonce>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+

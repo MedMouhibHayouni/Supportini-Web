@@ -1,0 +1,20 @@
+<div class="block-header">
+  <div class="row clearfix m-0  ">
+    <div class="col-md-6 col-sm-12">
+      <h1>{{titleHeaderPage}}</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a style="color: #ffa117" routerLink="/acceuil">Supportini</a></li>
+          <li class="breadcrumb-item active" aria-current="page" *ngIf="!titleSecondPage">{{titleHeaderPage}}</li>
+          <li class="breadcrumb-item active" aria-current="page" *ngIf="titleSecondPage"><a style="color: #ffa117" [routerLink]="route" >{{titleHeaderPage}}</a></li>
+          <li [class]="titleSecondPage==''?'breadcrumb-item':'breadcrumb-item active'" aria-current="page" *ngIf="titleSecondPage">{{titleSecondPage}}</li>
+
+        </ol>
+      </nav>
+    </div>
+<!--    <div class="col-md-6 col-sm-12 text-right hidden-xs">-->
+<!--      <a href="javascript:void(0);" class="btn btn-sm btn-primary" title="">Create Campaign</a>-->
+<!--      <a href="https://themeforest.net/item/oculux-bootstrap-4x-admin-dashboard-clean-modern-ui-kit/23091507" class="btn btn-sm btn-success" title="Themeforest"><i class="icon-basket"></i> Buy Now</a>-->
+<!--    </div>-->
+  </div>
+</div>

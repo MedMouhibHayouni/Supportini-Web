@@ -1,0 +1,262 @@
+
+.meteo{
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65em;
+  &.grow {
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}
+topWeatherleft1{
+  float:left;
+  max-width: 70%;
+}
+topWeatherCenter{
+  float:left;
+  max-width: 50%;
+}
+topWeatherRight{
+  float: right;
+  max-width: 25%;
+}
+.afterWeather{
+  margin-top: 100px;
+}
+
+.list-planing{
+  height: 200px;
+  float: left;
+  max-width: 70%;
+
+}
+
+.list-planing h1{
+  margin-bottom: 50px;
+}
+
+listSalle{
+float: right;
+  max-width: 30%;
+}
+
+.main-container {
+  padding: 30px;
+}
+
+/* HEADING */
+
+.heading {
+  text-align: center;
+}
+
+.heading__title {
+  font-weight: 600;
+}
+
+.heading__credits {
+  margin: 10px 0px;
+  color: #888888;
+  font-size: 25px;
+  transition: all 0.5s;
+}
+
+.heading__link {
+  text-decoration: none;
+}
+
+.heading__credits .heading__link {
+  color: inherit;
+}
+
+/* CARDS */
+
+
+/* divs of Suivi */
+
+.suivi{
+  float: left;
+  max-width: 80%;
+}
+
+
+/* Products List */
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+.buttonConsult{
+  float: right;
+  margin-right: 100px;
+}
+ul {
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  transform-origin: top right;
+  transform: skewY(-4.398705355deg);
+  margin-bottom: 200px;
+}
+li{
+  transform-origin: top left;
+  transform: skewY(4.398705355deg) rotatez(14.03624deg);
+  padding-top: 150%;
+  z-index: 1;
+  transition-property: z-index;
+  transition-duration: .3s;
+  margin-bottom: 200px;
+}
+.details{
+  position: absolute;
+  z-index: 2;
+  width: 98%;
+  height: 95%;
+  top: 0;
+  background-color: #DADDDF;
+  border-radius: 2vw;
+  box-shadow: inset 0px 0px 0px 7vw #FCF8F4;
+  box-sizing: border-box;
+  webkit-filter: drop-shadow(2px 6px 3px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(2px 6px 3px rgba(0, 0, 0, 0.4));
+  transform: rotate(0deg) translate(0, 0);
+  transition-property: transform;
+  transition-duration: .3s;
+}
+
+h2, p, img {
+  position: absolute;
+  z-index: 4;
+}
+
+p{
+  font-size:1.4em;
+  background-color: #FCF8F4;
+  padding: 2% 2.5% 2% 2.5%;
+}
+p:nth-child(2n){
+  top: 3%;
+  left: 5%;
+}
+p:nth-child(2n+1){
+  transform: rotatez(180deg);
+  bottom: 3%;
+  right: 5%;
+}
+h2{
+  text-align: center;
+  width: 122%;
+  left: -11%;
+  top: 46%;
+  transform: rotatez(-45deg);
+  background-color: #FCF8F4;
+  line-height: 140%;
+  transition-property: top;
+  transition-duration: .3s;
+}
+img{
+  width: 84%;
+  top: 50%;
+  left: 50%;
+}
+img:nth-child(2n){
+  transform: translateX(-10%) translateY(5%) rotatez(40deg);
+  transition-property: width,transform;
+  transition-duration: .3s;
+}
+img:nth-child(2n+1){
+  transform: translateX(-70%) translateY(-105%) rotatez(40deg);
+  transition-property: width,transform;
+  transition-duration: .3s;
+}
+
+li:hover{
+  z-index: 4;
+}
+li:hover h2{
+  top: 64%;
+}
+li:hover .details{
+  transform: rotate(-14.03624deg) translate(5.5%, 15%) scale(1.5);
+}
+li:hover img:nth-child(2n){
+  width: 60%;
+  transform: translateX(-15%) translateY(60%) rotatez(135deg);
+}
+li:hover img:nth-child(2n+1){
+  width: 120%;
+  transform: translateX(-65%) translateY(-75%) rotatez(-45deg);
+}
+@media (min-width:300px) {
+  body{
+    font-size: 2.75vw;
+  }
+  ul {
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 3vw;
+    margin: 0 3.9vw 0 15vw;
+  }
+  .details{
+    box-shadow: inset 0px 0px 0px 4vw #FCF8F4;
+  }
+}
+
+@media (min-width:600px) {
+  body{
+    font-size: 1.95vw;
+  }
+  ul {
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 2vw;
+    margin: 0 2.8vw 0 10vw;
+  }
+  .details{
+    box-shadow: inset 0px 0px 0px 2.8vw #FCF8F4;
+  }
+}
+
+@media (min-width:900px) {
+  body{
+    font-size: 1.5vw;
+  }
+  ul {
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 1.5vw;
+    margin: 0 2.2vw 0 8vw;
+  }
+  .details{
+    box-shadow: inset 0px 0px 0px 2.2vw #FCF8F4;
+  }
+}
+
+@media (min-width:1200px) {
+  body{
+    font-size: 1.25vw;
+  }
+  ul {
+    grid-template-columns: repeat(5,1fr);
+    grid-column-gap: 1vw;
+    margin: 0 1.8vw 0 6.5vw;
+  }
+  .details{
+    box-shadow: inset 0px 0px 0px 1.8vw #FCF8F4;
+  }
+}
+
+@media (min-width:1500px) {
+  body{
+    font-size: 1vw;
+  }
+  ul {
+    grid-template-columns: repeat(6,1fr);
+    grid-column-gap: 1vw;
+    margin: 0 1.5vw 0 5.5vw;
+  }
+  .details{
+    box-shadow: inset 0px 0px 0px 1.5vw #FCF8F4;
+  }
+}
+

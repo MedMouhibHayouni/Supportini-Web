@@ -1,0 +1,204 @@
+<div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card">
+      <div class="body">
+
+        <form  class="form-auth-small m-t-20 mb-3 " ngForm #salleForm="ngForm">
+          <div class="row clearfix">
+            <div class="col-8">
+              <div class="form-group">
+                <input type="text" id="titreAnnonce"  #titreInput class="form-control " name="titre" ngModel #titre="ngModel" placeholder="titre d'annonce" required >
+                <div class="invalid-feedback d-block text-left" *ngIf="titre.invalid&&titre.touched&&titre.hasError('required')">
+                 Titre est obligatoire
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-sm-3"(change)="ChoixDisciplin($event)">
+              <div class="form-group">
+                <select  class="form-control show-tick">
+                  <option selected >discipline</option>
+
+                  <option value="natation" >natation</option>
+                  <option value="foot" >foot</option>
+                  <option value="equitation" >equitation</option>
+                  <option value="equitation" >fitnesse</option>
+                  ///////////////////////////////////////
+                  <option value="basket" >Basket-ball </option>
+                  <option value="dance" >Danse sportive</option>
+                  <option value="escalade" >Escalade </option>
+                  <option value="handball" >Handball</option>
+
+                  <option value="squash" >Squash</option>
+                  <option value="kayak" >Kayak</option>
+                  <option value="plonge" >Plongée</option>
+                  <option value="voile" >Voile</option>
+
+                  <option value="golf" >golf </option>
+                  <option value="rugby" >Rugby </option>
+
+
+
+
+
+
+
+                  /////////////////////////////
+                </select>
+              </div>
+            </div>
+          <div class="row clearfix">
+
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="prix" #prixInput class="form-control" placeholder="prix" name="prix" ngModel #prix="ngModel" required>
+                <div class="invalid-feedback d-block text-left" *ngIf="prix.invalid&&prix.touched&&prix.hasError('required')">
+                  prix est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3" (change)="choixVille($event)">
+              <div class="form-group">
+                <select  class="form-control show-tick">
+                  <option selected>ville</option>
+                  <option value="ariana">	Ariana</option>
+                  <option  value="beja">Beja</option>
+                  <option  value="benarous">	Ben Arous</option>
+                  <option  value="bizerte">Bizerte</option>
+                  <option  value=" gabes">	Gabès </option>
+                  <option  value="gafsa">	Gafsa </option>
+                  <option  value="jendouba">Jendouba </option>
+                  <option  value="kairouan"> Kairouan</option>
+                  <option  value="kasserine"> Kasserine</option>
+                  <option  value="kebili"> Kébili</option>
+                  <option  value="kef"> Le Kef</option>
+                  <option  value="mahdia">Mahdia </option>
+                  <option  value="manouba"> La Manouba</option>
+                  <option  value=" medenine">Médenine </option>
+                  <option  value=" monastir"> Monastir</option>
+                  <option  value="Nabeul">Nabeul </option>
+                  <option  value="Sfax"> 	Sfax</option>
+                  <option  value="sidibouzid"> Sidi Bouzid</option>
+                  <option  value="siliana"> 	Siliana</option>
+                  <option  value="sousse">	Sousse </option>
+                  <option  value="tataouine "> Tataouine</option>
+                  <option value="	tozeur"> 	Tozeur</option>
+                  <option  value="tunis"> Tunis</option>
+                  <option  value="zaghouan ">Zaghouan </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="rue" #rueInput class="form-control" placeholder="rue" name="rue" ngModel #rue="ngModel" required>
+                <div class="invalid-feedback d-block text-left" *ngIf="rue.invalid&&rue.touched&&rue.hasError('required')">
+                  rue est obligatoire
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="code" #codeInput class="form-control" placeholder="code postal" name="code" ngModel #code="ngModel" required>
+                <div class="invalid-feedback d-block text-left" *ngIf="code.invalid&&code.touched&&code.hasError('required')">
+                  code postal est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="capacite" #capaciteInput class="form-control" placeholder="capacité" name="capacite" ngModel #capacite="ngModel" required>
+                <div class="invalid-feedback d-block text-left" *ngIf="capacite.invalid&&capacite.touched&&capacite.hasError('required')">
+                  capacite est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3" (change)="choixType($event)">
+              <div class="form-group">
+                <select  class="form-control show-tick">
+                  <option selected> Type </option>
+                  <option  value="domicile">a domicile</option>
+                  <option  value="salle">Salle de Sport</option>
+                  <option  value="entreprise">Entreprise</option>
+                  <option  value="espace">Espace public</option>
+                  <option  value="enligne">En ligne</option>
+                </select>
+              </div>
+            </div>
+
+
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="datedebut" #dateDebutInput data-provide="datepicker" data-date-autoclose="true" data-date-format='yyyy-mm-dd' data-date-end-date="0d" class="form-control" placeholder="Date debut">
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="datefin" #dateFinInput data-provide="datepicker" data-date-autoclose="true" data-date-format='yyyy-mm-dd' class="form-control" placeholder="Date fin">
+              </div>
+            </div>
+
+                      <!--date d'entrainement 1er semaine-->
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="tdone" #tdOneInput data-provide="datepicker" data-date-autoclose="true" data-date-format='yyyy-mm-dd' class="form-control" placeholder="day 1">
+                <input type="number" id="tdoneHD" #td1HDInput class="form-control" placeholder="heur debut">
+                <input type="number" id="thoneHF" #td1HFInput class="form-control" placeholder="heur fin">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="tdTow" #tdTowInput data-provide="datepicker" data-date-autoclose="true" data-date-format='yyyy-mm-dd' class="form-control" placeholder="day 2">
+                <input type="number" id="tdTowHD" #td2HDInput class="form-control" placeholder="heur debut">
+                <input type="number" id="tdTowHF" #td2HFInput class="form-control" placeholder="heur fin">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" id="tdthree" #tdthreeInput data-provide="datepicker" data-date-autoclose="true"  data-date-format='yyyy-mm-dd' class="form-control" placeholder="day3">
+                <input type="number" id="tdthreeHD" #td3HDInput class="form-control" placeholder="heur debut">
+                <input type="number" id="tdThreeHF" #td3HFInput class="form-control" placeholder="heur fin">
+              </div>
+            </div>
+
+
+
+
+            <div class="col-12  ">
+              <input  type="file" id="image" #fileInput  class="dropify">
+            </div>
+
+
+            <div class="col-12 " >
+              <div class="form-group mt-3">
+                <textarea id="description" #descriptionInput rows="6" class="form-control no-resize" placeholder="Description"></textarea>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-sm-12 " style="text-align: center">
+              <button type="submit" class="btn  btnColor" (click)="createAnnonce()" [routerLink]="'/mes-annonces'" >Ajouter</button>
+              <button type="submit" class="btn btn-outline-secondary"  [routerLink]="'/dashboard'" >Annuler</button>
+            </div>
+
+          </div>
+       </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>

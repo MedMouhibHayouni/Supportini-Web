@@ -1,0 +1,13 @@
+
+  <p-carousel *ngIf="empty" [value]="listGyms" orientation="vertical" [style]="{'max-width':'300px'}" verticalViewPortHeight="352px" [numVisible]="1" [numScroll]="1">
+
+    <ng-template let-gym pTemplate="item" class="col-12" >
+      <app-iteam-salle-dashboard [Gyms]="gym"></app-iteam-salle-dashboard>
+    </ng-template>
+  </p-carousel>
+
+
+
+
+
+

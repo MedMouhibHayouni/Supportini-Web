@@ -1,0 +1,118 @@
+<div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card">
+      <div class="body">
+
+        <form class="form-auth-small m-t-20 mb-3 " ngForm #salleForm="ngForm">
+          <div class="row clearfix">
+            <div class="col-8">
+              <div class="form-group">
+                <input type="text" class="form-control " name="titre" ngModel #titre="ngModel" placeholder="{{oneannonce.titre}}" required  [(ngModel)]="oneannonce.titre">
+                <div class="invalid-feedback d-block text-left" *ngIf="titre.invalid&&titre.touched&&titre.hasError('required')">
+                  Titre est obligatoire
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text"  class="form-control" placeholder="{{oneannonce.discipline}}" name="discipline" ngModel #discipline="ngModel" required [(ngModel)]="oneannonce.discipline">
+                <div class="invalid-feedback d-block text-left" *ngIf="discipline.invalid&&discipline.touched&&discipline.hasError('required')">
+                  Discipline est obligatoire
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="{{oneannonce.prix}}" name="prix" ngModel #prix="ngModel" required [(ngModel)]="oneannonce.prix">
+                <div class="invalid-feedback d-block text-left" *ngIf="prix.invalid&&prix.touched&&prix.hasError('required')">
+                  prix est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="{{oneannonce.ville}}" name="ville" ngModel #ville="ngModel" required [(ngModel)]="oneannonce.ville">
+                <div class="invalid-feedback d-block text-left" *ngIf="ville.invalid&&ville.touched&&ville.hasError('required')">
+                  ville est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="{{oneannonce.rue}}" name="rue" ngModel #rue="ngModel" required [(ngModel)]="oneannonce.rue">
+                <div class="invalid-feedback d-block text-left" *ngIf="rue.invalid&&rue.touched&&rue.hasError('required')">
+                  rue est obligatoire
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="{{oneannonce.codePostal}}" name="code" ngModel #code="ngModel" required [(ngModel)]="oneannonce.codePostal">
+                <div class="invalid-feedback d-block text-left" *ngIf="code.invalid&&code.touched&&code.hasError('required')">
+                  code postal est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="{{oneannonce.capacite}}" name="capacite" ngModel #capacite="ngModel" required [(ngModel)]="oneannonce.capacite">
+                <div class="invalid-feedback d-block text-left" *ngIf="capacite.invalid&&capacite.touched&&capacite.hasError('required')">
+                  capacite est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <select class="form-control show-tick">
+                  <option value="">- Type -</option>
+                  <option value="10">a domicile</option>
+                  <option value="20">Salle de Sport</option>
+                  <option value="10">Entreprise</option>
+                  <option value="20">Espace public</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-6   hidden-xs">
+              <input type="file" class="dropify  " >
+            </div>
+
+
+            <div class="col-12 " >
+              <div class="form-group mt-3">
+                <textarea rows="6" class="form-control no-resize" placeholder="{{oneannonce.description}}" [(ngModel)]="oneannonce.description"></textarea>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-sm-12 " style="text-align: center">
+              <button type="submit" class="btn  btnColor" (click)="updateAnnonce()" [routerLink]="['/detail-annonce/',oneannonce.id]">Modifier</button>
+              <button type="submit" class="btn btn-outline-secondary" [routerLink]="['/detail-annonce/',oneannonce.id]" >Annuler</button>
+            </div>
+
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>

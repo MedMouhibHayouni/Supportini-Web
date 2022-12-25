@@ -1,0 +1,44 @@
+
+<div class="container-fluid p-4">
+
+  <div class="row ">
+    <div id="carouselExampleControls" class="carousel col-md-6 col-12 slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item"
+             *ngFor="let photo of imageProd; let i = index"
+             [ngClass]="{'active': i == 0 }">
+          <img src="http://localhost:8080/public/images/{{photo.imageProduit}}"  class=" responsive d-block w-100">
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="clearfix">
+          <span class="h2">
+                    <strong class="text-right">{{pro.nomproduit}}</strong><br />
+
+                </span>
+        <div class="pull-right">
+          <span class="h2"><strong>{{pro.prix}}DNT</strong></span>
+        </div>
+
+      </div>
+      <hr />
+      <p>
+        {{pro.description}}
+      </p>
+      <hr />
+
+      <button type="submit" class="btn btn-general" routerLink="/liste-Produit" >Retour </button>
+
+    </div>
+  </div>
+</div>

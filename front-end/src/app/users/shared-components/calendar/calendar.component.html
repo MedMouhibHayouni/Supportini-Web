@@ -1,0 +1,41 @@
+<div class='demo-app'>
+  <div class='demo-app-main'>
+    <full-calendar
+      *ngIf='calendarVisible'
+      [options]='calendarOptions'
+    ></full-calendar>
+  </div>
+
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+
+      <label for="title">Title :</label>
+      <input type="text" id="title" class="form-control" ##title name="title" placeholder="titre De l'evenement" >
+      <div class="mb-3">
+        <label for="startEvent">Start Event :</label>
+        <div class="input-group">
+          <input type="text" id="startEvent" name="startEvent" data-provide="datepicker" data-date-autoclose="true" data-date-format='yyyy-mm-dd' data-date-start-date="0d" class="form-control" placeholder="Date debut">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="endEvent">End Event :</label>
+        <div class="input-group">
+          <input type="text" id="endEvent" data-provide="datepicker" name="endEvent" data-date-autoclose="true" data-date-format='yyyy-mm-dd' data-date-start-date="0d" class="form-control" placeholder="Date fin">
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="addEvent();modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<hr/>
+

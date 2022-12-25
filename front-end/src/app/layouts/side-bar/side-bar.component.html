@@ -1,0 +1,77 @@
+<div id="left-sidebar" class="sidebar mini_sidebar_on">
+  <div class="navbar-brand">
+    <a href="../../../index.html"><img src="../assets/images/SforSupportini.svg" alt="Supportini Logo" class="logo"><span><img src="../assets/images/SupportiniWord.svg" class="supp"></span></a>
+
+  </div>
+  <div class="sidebar-scroll">
+    <div class="user-account">
+      <div class="user_div">
+        <img src="http://localhost:8080/public/images/imageUser/{{user.image_name}}" class="user-photo" alt="User Profile Picture">
+      </div>
+      <div class="dropdown">
+        <span>Bienvenue,</span>
+        <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{user.nom}}  {{user.prenom}}</strong></a>
+        <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
+          <li><a type="button"  routerLink="profil"><i class="icon-user"></i>Profile</a></li>
+<!--          <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>-->
+          <li><a type="button" routerLink="/setting" ><i class="icon-settings"></i>Configuration</a></li>
+          <li class="divider"></li>
+          <li><a type="button" (click)="logout()"><i class="icon-power"></i>Déconnecter</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav id="left-sidebar-nav" class="sidebar-nav">
+      <ul id="main-menu" class="metismenu">
+<!--        <li class="header">Main</li>-->
+        <li *ngIf="user.fk_idRole!=1">
+
+          <a routerLink="dashboard"><i class="icon-home"></i><span>Tableau de bords</span></a>
+
+
+        </li>
+        <li>  <a *ngIf="user.fk_idRole==2 "routerLink="suiviTrainer"><i class="fa-solid fa-weight-scale"></i><span>Suivi</span></a>
+            <a *ngIf="user.fk_idRole==3" routerLink="suiviCoach"><i class="fa-solid fa-weight-scale"></i><span>Suivi</span></a>
+        </li>
+        <li *ngIf="user.fk_idRole==1">
+            <a routerLink="/admin/gestion-user"><i class="icon-user"></i><span>Gestion Utilisateurs</span></a>
+        </li>
+        <li *ngIf="user.fk_idRole==1">
+
+          <a routerLink="/admin/gestion-annonces"><i class="fa-solid fa-stopwatch-20"></i><span>Gestion Annonces</span></a>
+        </li>
+        <li *ngIf="user.fk_idRole==1">
+          <a routerLink="/admin/gestion-produit"><i class="fa-solid fa-cash-register"></i><span>Gestion Produits</span></a>
+
+        </li>
+        <li *ngIf="user.fk_idRole==1">
+          <a routerLink="/admin/gestion-salle-de-sport"><i class="fa-solid fa-dumbbell"></i><span>Gestion Salle De Sport</span></a>
+        </li>
+
+
+<!--        <li><a href="index2.html"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>-->
+<!--        <li><a href="index3.html"><i class="icon-diamond"></i><span>Crypto Coin</span></a></li>-->
+<!--        <li><a href="../hrms/index.html"><i class="icon-rocket"></i><span>HRMS System</span></a></li>-->
+<!--        <li><a href="../jobportal/index.html"><i class="icon-badge"></i><span>Job Portal</span></a></li>-->
+<!--        <li><a href="../landing/index.html"><i class="icon-cursor"></i><span>Landing Page</span></a></li>-->
+<!--        <li class="header">App</li>-->
+
+<!--        <li><a href="app-inbox.html"><i class="icon-envelope"></i><span>Email</span></a></li>-->
+<!--        <li><a href="app-chat.html"><i class="icon-bubbles"></i><span>Messenger</span></a></li>-->
+<!--        <li>-->
+<!--          <a href="#Project" class="has-arrow"><i class="icon-bubbles"></i><span>Project</span></a>-->
+<!--       -->
+<!--        </li>-->
+        <li *ngIf="user.fk_idRole!=1"><a href="calendar"><i class="icon-calendar"></i><span>Calendrier</span></a></li>
+<!--        -->
+        <li><a *ngIf="user.fk_idRole!=1" routerLink="list-salle-de-sport"><i class="fa-solid fa-dumbbell"></i><span>Nos Salles de Sport</span></a></li>
+
+        <li><a *ngIf="user.fk_idRole!=1" routerLink="liste-annonce"><i class="fa-solid fa-stopwatch-20"></i><span>Offres d'entrainement</span></a></li>
+
+
+
+
+
+      </ul>
+    </nav>
+  </div>
+</div>

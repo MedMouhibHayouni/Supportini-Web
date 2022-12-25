@@ -1,0 +1,50 @@
+
+
+<div id="main-content" class="container-fluid p-4 ">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+
+        <div class="tab-content mt-0">
+          <div class="tab-pane active show" id="Users">
+            <div class="table-responsive">
+              <table class="table table-hover table-custom spacing8">
+                <thead>
+                <tr>
+                  <th class="w60">Titre</th>
+                  <th>Discipline</th>
+                  <th>prix</th>
+                  <th>Type</th>
+                  <th>Dure</th>
+                  <th class="w100">Action</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let annonce of listAnnonces  ; let i = index ">
+                <tr data-status="approved">
+                  <td class="w60">
+                    <img src="//localhost:8080/public/images/annonce/{{annonce.image}}" data-toggle="tooltip" data-placement="top" title="{{annonce.titre}}" alt="Avatar" class="w35 rounded">
+                  </td>
+                  <td>
+                    <a href="javascript:void(0);" title="">{{annonce.discipline}}</a>
+                    <p class="mb-0">{{annonce.rue}},{{annonce.ville}},{{annonce.codePostal}}</p>
+                  </td>
+                  <td><span class="badge badge-success">{{annonce.prix}}</span>
+                  </td>
+                  <td><span >{{annonce.type}}</span>
+                  <td><span >{{annonce.dateDebut}}-{{annonce.dateFin}}</span>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-default js-sweetalert button" title="Delete" (click)="deleteAnnonce(annonce.id)" data-type="confirm"><i class="fa-solid fa-trash-can"></i></button></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

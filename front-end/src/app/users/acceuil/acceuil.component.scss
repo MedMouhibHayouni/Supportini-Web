@@ -1,0 +1,352 @@
+.responsive {
+  width: 100%;
+  max-height: 500px;
+}
+
+.frameDesign{
+  margin-bottom: 600px;
+}
+
+.carousel-inner:hover {
+  opacity: 50%;
+}
+.background-card-service{
+  background-color: #282b2f;
+}
+.bg-image{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 15%;
+  max-height: 2000px;
+  background:transparent;
+}
+
+.decouvrir{
+  color:#343a40 ;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 1% 2%;
+}
+.mt-5, .my-5{
+  margin-top: 15rem !important;
+}
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800,300);
+@import url('https://fonts.googleapis.com/css?family=Yesteryear');
+$lines-color : fade-out(#fff, .3);
+.displayed-frame{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.frame {
+  position: absolute;
+  margin-top: auto;
+  left: 55%;
+  right: 20%;
+  width: 700px;
+  height: 400px;
+  padding-top: 0px;
+  margin-left: -400px;
+  border-radius: 2px;
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  background: none;
+  color: #fff;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.frame {
+  position: absolute;
+  top: 10%;
+  left: 55%;
+  right: 20%;
+  width: 700px;
+  height: 400px;
+
+  padding-top: 30px;
+
+  margin-left: -400px;
+  border-radius: 2px;
+  box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  background: none;
+  color: #fff;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.frame .circle {
+  position: absolute;
+  z-index: 10;
+  height: 20px;
+  width: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: linear-gradient(45deg, #ff049f, #9a0fe0 45%);
+  border-radius: 50%;
+  animation: circle 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.line {
+  position: absolute;
+  z-index: 10;
+  width: 150px;
+  height: 1px;
+  top: 198px;
+  transform: scaleX(0);
+}
+
+.line.left {
+  left: 50px;
+  transform-origin: 100% 50%;
+  animation: lines 1s ease-in-out 0.8s, line-left 1s steps(1) 0.8s;
+  background: $lines-color;
+}
+
+.line.right {
+  right: 50px;
+  background: $lines-color;
+  transform-origin: 0% 50%;
+  animation: lines 1s ease-in-out 0.8s, line-right 1s steps(1) 0.8s;
+}
+
+.bracket {
+  position: absolute;
+  z-index: 10;
+  height: 130px;
+  width: 1px;
+  top: 137px;
+  background: $lines-color;
+  animation: bracket .4s ease-out 1.7s;
+  animation-fill-mode: both;
+}
+
+.bracket:before, .bracket:after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 25px;
+  height: 1px;
+}
+
+.bracket.right:before, .bracket.right:after {
+  background: $lines-color;
+}
+
+.bracket.left {
+  left: 50px;
+}
+
+.bracket.left:before {
+  top: 0;
+  left: 0;
+  transform-origin: 0% 50%;
+  animation: bracket-line .2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.bracket.left:after {
+  bottom: 0;
+  left: 0;
+  transform-origin: 0% 50%;
+  animation: bracket-line .2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.bracket.left:before, .bracket.left:after {
+  background: $lines-color;
+}
+
+.bracket.right {
+  right: 50px;
+}
+
+.bracket.right:before {
+  top: 0;
+  right: 0;
+  transform-origin: 100% 50%;
+  animation: bracket-line .2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.bracket.right:after {
+  bottom: 0;
+  right: 0;
+  transform-origin: 100% 50%;
+  animation: bracket-line .2s ease-out 2.1s;
+  animation-fill-mode: both;
+}
+
+.big {
+  position: absolute;
+  z-index: 5;
+  top: 160px;
+  width: 700px;
+  text-align: center;
+  font-size: 7rem;
+  letter-spacing: 2px;
+  color: #fff;
+  line-height: 70px;
+  font-family: "yesteryear", cursive;
+  background-image: linear-gradient(33deg, #ff5206 25%, #ffa117);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: 0.2s ease-in;
+}
+
+.hide {
+  position: absolute;
+  z-index: 7;
+  width: 700px;
+  height: 50px;
+  background: none;
+  left: 0;
+  animation: reveal .4s ease-out 1.7s;
+  animation-fill-mode: both;
+}
+
+.hide.top {
+  bottom: 49%;
+  transform-origin: 50% 0%;
+}
+
+.hide.bottom {
+  top: 49%;
+  transform-origin: 50% 100%;
+}
+
+.small {
+  position: absolute;
+  z-index: 10;
+  width: 700px;
+  text-align: center;
+  left: 0;
+  font-weight: 300;
+  font-size: 1.8rem;
+  color: #FFFFFF;
+  line-height: 30px;
+  word-spacing: .7rem;
+  text-transform: uppercase;
+}
+
+.first-letter {
+  font-family: yesteryear, cursive;
+  font-size: 5rem;
+  background-image: linear-gradient(33deg, #ff5206 25%, #ffa117);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.small.top {
+  top: 4rem;
+  animation: small-top .5s ease-out 2.2s;
+  animation-fill-mode: both;
+}
+.small.bottom {
+  bottom: 4rem;
+  animation: small-bottom .5s ease-out 2.2s;
+  animation-fill-mode: both;
+}
+
+@keyframes circle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  90%, 100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lines {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes line-left {
+  0% {
+    transform-origin: 100% 50%;
+  }
+  50%, 100% {
+    transform-origin: 0% 50%;
+  }
+}
+
+@keyframes line-right {
+  0% {
+    transform-origin: 0% 50%;
+  }
+  50%, 100% {
+    transform-origin: 100% 50%;
+  }
+}
+
+@keyframes bracket {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bracket-line {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+@keyframes small-top {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes small-bottom {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+

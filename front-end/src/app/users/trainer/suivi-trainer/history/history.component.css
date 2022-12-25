@@ -1,0 +1,98 @@
+
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 30px;
+  width: 98%;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 25px;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #22252a;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  border-radius: 10px;
+}
+
+/* Demo Stuff End -> */
+
+/* <- Magic Stuff Start */
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.btn-1 {
+  background-image: linear-gradient(to right, #ffdd00 0%, #fb8a02 51%, #ff842b 100%);
+}
+
+.blockquote-wrapper {
+  display: flex;
+  padding: 0 20px;
+}
+
+/* Blockquote main style */
+.blockquote {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  padding: 30px 0;
+  width: 100%;
+  max-width: 500px;
+  z-index: 1;
+  margin: 50px auto;
+  align-self: center;
+  border-color: #FFA117;
+  border-top: solid 5px #FFA117;
+  border-bottom: solid 5px #FFA117;
+  border-right: solid 5px #FFA117;
+  border-left: solid 5px #FFA117;
+  border-radius: 10px;
+}
+
+/* Blockquote header */
+.blockquote h1 {
+  position: relative;
+  color: #FFFFFF;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  margin-left: 20px;
+}
+
+/* Blockquote right double quotes */
+.blockquote:after {
+  position: absolute;
+  content: "”";
+  color: rgba(255, 255, 255, 1);
+  font-size: 10rem;
+  line-height: 0;
+  bottom: -43px;
+  right: 30px;
+}
+
+/* increase header size after 600px */
+@media all and (min-width: 600px) {
+  .blockquote h1 {
+    font-size: 60px;
+  }
+
+}
+
+/* Blockquote subheader */
+.blockquote h4 {
+  position: relative;
+  color: #FFA117;
+  font-size: 1.4rem;
+  font-weight: normal;
+  line-height: 1;
+  margin: 0;
+  padding-top: 20px;
+  z-index: 1;
+}
+
+
+
+

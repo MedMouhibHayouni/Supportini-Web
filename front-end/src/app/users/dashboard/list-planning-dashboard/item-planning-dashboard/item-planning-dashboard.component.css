@@ -1,0 +1,47 @@
+.responsive {
+  width: 100%;
+  max-height: 500px;
+}
+
+
+
+.cardPlanning {
+  background-image: url("../../../../../assets/images/planingBack.jpg");
+  display: flex;
+  flex-direction: column;
+   color: #FFA117;
+  text-align: center;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(10, 10, 10, 15%);
+  scroll-snap-align: start;
+  transition: all 0.2s;
+  margin-right: 20px;
+  height: 250px !important;
+  width: 230px!important;
+  margin-bottom: 20px;
+}
+
+.cardPlanning .card-title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.cardPlanning .card-content {
+  margin: 20px 0;
+  max-width: 85%;
+}
+
+.cardPlanning .card-link-wrapper {
+  margin-top: auto;
+}
+
+.cardPlanning .card-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffa117;
+
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}

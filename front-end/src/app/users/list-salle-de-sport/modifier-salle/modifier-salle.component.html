@@ -1,0 +1,73 @@
+<div class="body">
+  <!-- code Upload images  -->
+  <div class="row ">
+    <form class="form-auth-small m-t-20 mb-3 " ngForm #salleForm="ngForm">
+    <div class="container-fluid">
+      <div class="block-header">
+        <div class="row clearfix">
+          <div class="col-md-12  ">
+            <input type="file" class="dropify" >
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-lg-6 col-md-12">
+          <div class="form-group">
+            <input type="text" class="form-control"  name="nom" ngModel #nom="ngModel" placeholder="nomSalle" required >
+            <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+              Nom salle est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-group">
+            <input type="number" class="form-control" name="prix" ngModel #prix="ngModel" placeholder="prix" pattern="[1-9][0-9]{0,}"  required>
+            <div class="invalid-feedback d-block text-left" *ngIf="prix.invalid&&prix.touched&&prix.hasError('required')">
+              Montant Mensuel est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="prix.errors?.['pattern']">
+              montant doit etre positif.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+          <div class="form-group">
+            <input type="text" class="form-control"  name="rue" ngModel #rue="ngModel" placeholder="rue" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="rue.invalid&&rue.touched&&rue.hasError('required')">
+              rue est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-group">
+            <input type="text" class="form-control"  name="ville" ngModel #ville="ngModel"  placeholder="ville" required>
+            <div class="invalid-feedback d-block text-left" *ngIf="ville.invalid&&ville.touched&&ville.hasError('required')">
+              Ville est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-group">
+            <input type="number" class="form-control"  name="postal" ngModel #postal="ngModel" placeholder="codePostal" pattern="[0-9]{4,4}"  required>
+            <div class="invalid-feedback d-block text-left" *ngIf="postal.invalid&&postal.touched&&postal.hasError('required')">
+              Code postal est obligatoire.
+            </div>
+            <div class="invalid-feedback d-block text-left" *ngIf="postal.errors?.['pattern']">
+              Code postal de longueur 4.
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+          <div class="form-group">
+            <textarea rows="4" type="text" class="form-control" name="description" ngModel #description="ngModel" placeholder="description" required></textarea>
+            <div class="invalid-feedback d-block text-left" *ngIf="description.invalid&&description.touched&&description.hasError('required')">
+              Description est obligatoire.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div id="circularMenu" class="circular-menu">
+
+  <a class="floating-btn" onclick="document.getElementById('circularMenu').classList.toggle('active');">
+    <i class="fa fa-plus"></i>
+  </a>
+  <menu class="items-wrapper">
+    <a href="#"></a>
+    <a href="#" class="menu-item fa fa-calculator" data-toggle="modal" data-target="#bmiModal"></a>
+    <a title="Ajouter Suivi" data-toggle="modal" data-target="#myModal" class="menu-item fa fa-hand-dots"></a>
+    <a class="menu-item fa fa-linkedin" data-toggle="modal" data-target="#myModal"></a>
+    <a href="#" class="menu-item fa fa-linkedin"></a>
+  </menu>
+
+
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="login-box">
+          <h2>Ajouter Nouvell Suivi</h2>
+          <form>
+            <div class="user-box">
+              <input type="number" id="poidsInput" name="poidsInput" required="">
+              <label>Poids</label>
+            </div>
+            <div class="user-box">
+              <input type="number" id="tailleInput" name="tailleInput" required="">
+              <label>Taille</label>
+            </div>
+            <a (click)="addSuivi()" routerLink="/suiviTrainer">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <i class="fa fa-send-o"></i>
+            </a>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div id="bmiModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content top 50">
+      <div class="modal-body">
+        <div class="login-box">
+          <h2>Calculatrice du IMC</h2>
+          <form>
+            <div class="user-box">
+              <div id="scale_main">
+                <div class="align-center" id="scale_display">
+                  <h3 class="align-center" id="bmi" *ngIf="bmiValue">{{bmiCalcul}}</h3>
+                  <h3 class="align-center" id="bmiValue" *ngIf="bmiValue">{{bmiValue}}</h3>
+                  <div id="needle">
+                  </div>
+                  <div id="needle_bottom">
+                  </div>
+                </div>
+
+                <div class="measurement" id="height">
+                  <h4>Height</h4>
+                  <input type="number" name="height"[(ngModel)]="heightCalcul" />
+                  <span class="unit">Inches</span>
+                </div>
+                <div class="measurement" id="weight">
+                  <h4>Weight</h4>
+                  <input class="input" type="number" id="weight_input" name="weight" [(ngModel)]="weightCalcul" required/>
+                  <span class="unit">Pounds</span>
+                </div>
+
+                <div>
+                  <button id="calculate"
+                         (click)="calculateBMI()">
+                    CALCULATE
+                  </button>
+                  <button id="clear" type="delete" >CLEAR</button>
+                </div>
+                <a>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <i class="fa fa-send-o"></i>
+                </a>
+              </div>
+              </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<app-suivi-tab></app-suivi-tab>
+
+

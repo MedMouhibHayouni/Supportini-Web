@@ -1,0 +1,67 @@
+<div class="stats-content">
+  <p-carousel  [showIndicators]="false" [showNavigators]="true" [value]="listSuiviAsc" [numVisible]="6" [numScroll]="4" [circular]="false" [responsiveOptions]="responsiveOptions">
+    <ng-template let-suiviss pTemplate="item">
+      <a class="btn btn-1" (click)="loadIdData(suiviss.id)">{{suiviss.date_suivi}}</a>
+    </ng-template>
+  </p-carousel>
+
+  <div *ngIf="suiviss">
+      <!--
+ GRADIENT BANNER DESIGN BY SIMON LURWER ON DRIBBBLE:
+ https://dribbble.com/shots/14101951-Banners
+
+ -->
+    <div class="blockquote-wrapper" [hidden]="!feedbackByIdSuivi">
+      <div class="blockquote">
+        <h1>
+          {{feedbackByIdSuivi}}
+        </h1>
+        <h4>&mdash;Hassen Rahali</h4>
+      </div>
+    </div>
+
+
+    <div class="row clearfix overflow-hidden">
+      <div class="col-6 col-md-4">
+        <div class="card">
+          <div class="body">
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="icon-in-bg bg-indigo text-white text-large rounded-circle"><i class="fa fa-ruler-vertical"><i class="fa fa-person"></i></i></div>
+              <div class="ml-4">
+                <span>Taille</span>
+                <h4 class="mb-0 font-weight-medium">{{suiviss.taille}} cm</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="card">
+          <div class="body">
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="icon-in-bg bg-pink text-white text-large rounded-circle"><i class="fa fa-cake-candles"></i></div>
+              <div class="ml-4">
+                <span>Age</span>
+                <h4 class="mb-0 font-weight-medium">{{suiviss.age}} Ans</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="card">
+          <div class="body">
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="icon-in-bg bg-azura text-white rounded-circle text-large"><i class="fa fa-weight-scale"></i></div>
+              <div class="ml-4">
+                <span>Poids</span>
+                <h4 class="mb-0 font-weight-medium">{{suiviss.poids}} Kg</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

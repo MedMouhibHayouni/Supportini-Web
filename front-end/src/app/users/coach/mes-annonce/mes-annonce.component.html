@@ -1,0 +1,18 @@
+
+
+<button type="submit" class="btn  btnColor"   [routerLink]="'/ajouter-annonce'" >Ajouter une annonce</button>
+<div class="container-fluid d-flex flex-wrap justify-content-around">
+
+
+  <div   *ngFor="let annonce of listAnnonces" class="col-3">
+
+
+    <div  routerLink="/detail-annonce/{{annonce.id}}">
+
+      <app-item-annonce [annonce]="annonce"></app-item-annonce>
+    </div>
+
+
+
+  </div>
+</div>

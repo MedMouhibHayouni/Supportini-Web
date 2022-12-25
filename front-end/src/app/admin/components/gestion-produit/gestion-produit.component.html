@@ -1,0 +1,126 @@
+<div id="main-content" class="container-fluid p-4 ">
+  <div class="row clearfix">
+    <div class="col-lg-12">
+      <div class="card">
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Produit">Notre Produits</a></li>
+          <div class="col-md-3">
+            <button class="btn btn-general" title="ajouter" routerLink="../Ajout-Produit">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </ul>
+        <div class="tab-content mt-0">
+          <div class="tab-pane active show" id="Produit">
+            <div class="table-responsive">
+              <table class="table table-hover table-custom spacing8">
+                <thead>
+                <tr>
+                  <th class="w60">Nom</th>
+                  <th></th>
+                  <th>Quantite</th>
+
+                  <th>Prix</th>
+                  <th class="w100">Action</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let Prod of Produits ; let i = index ">
+                <tr data-status="approved">
+                  <td class="w60">
+                     <img src="http://localhost:8080/public/images/{{Prod.imageProduit}}"data-toggle="tooltip" data-placement="top" title="{{Prod.nomproduit}}" alt="Avatar" class="w35 rounded">
+                  </td>
+                  <td>
+                    <a href="javascript:void(0);" title="">{{Prod.nomproduit}}</a>
+                    <p class="mb-0">{{Prod.description}}</p>
+                  </td>
+                  <td><span class="badge badge-success">{{Prod.quantite}}</span>
+                  </td>
+
+                  <td><span >{{Prod.prix}}</span>
+                  </td>
+                  <td>  <button type="button" class="btn btn-sm btn-default " title="Edit" data-toggle="modal" data-target=".new-project-modal"(click)="getEditProduit(Prod)"><i class="fa fa-edit"></i></button>
+                    <button type="button" class="btn btn-sm btn-default js-sweetalert button" title="Delete" data-type="confirm" (click)="deleteProduct(Prod.id)"> <i class="fa-solid fa-trash-can"></i></button></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade new-project-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modifier un utilisateur</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+  <!--modal modifier produit-->
+  <div class="body" >
+    <!-- code Upload images  -->
+    <div class="row ">
+      <form class="form-auth-small m-t-20 mb-3 " ngForm #ProduitForm="ngForm">
+        <div class="container-fluid">
+          <div class="block-header">
+            <div class="row clearfix">
+              <div class="col-md-12  ">
+                <input type="file" class="dropify" >
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group">
+                <input [(ngModel)]="produit.nomproduit" type="text" class="form-control"  name="nom" ngModel #nom="ngModel" placeholder="Nom de Produit" required>
+                <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+                  NOM de Produit est obligatoire
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group">
+                <input [(ngModel)]="produit.prix" type="number" class="form-control" name="prix" ngModel #prix="ngModel" placeholder="prix" pattern="[1-9][0-9]{0,}" required>
+                <div class="invalid-feedback d-block text-left" *ngIf="prix.invalid&&prix.touched&&prix.hasError('required')">
+                  Prix est obligatoire
+                </div>
+                <div class="invalid-feedback d-block text-left" *ngIf="prix.errors?.['pattern']">
+                  Prix doit etre positifs
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                  <input [(ngModel)]="produit.quantite" type="number" class="form-control" name="Quantite" ngModel #Quantite="ngModel" placeholder="Quantite" pattern="[1-9][0-9]{0,}" required>
+                  <div class="invalid-feedback d-block text-left" *ngIf="Quantite.invalid&&Quantite.touched&&Quantite.hasError('required')">
+                    Quantite est obligatoire
+                  </div>
+                  <div class="invalid-feedback d-block text-left" *ngIf="prix.errors?.['pattern']">
+                    Quantite doit etre positifs
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+              <div class="form-group">
+                <textarea [(ngModel)]="produit.description" rows="4" type="text" class="form-control"  name="description" ngModel #description="ngModel" placeholder="Description" required></textarea>
+                <div class="invalid-feedback d-block text-left" *ngIf="description.invalid&&description.touched&&description.hasError('required')">
+                  Description est obligatoire.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-round btn-default" data-dismiss="modal" >Annuler</button>
+          <button type="button" class="btn btn-round btn-success" (click)="updateProduct(produit.id)"[disabled]="ProduitForm.invalid ">Modifier</button>
+        </div>
+      </form>
+    </div>
+  </div>
+

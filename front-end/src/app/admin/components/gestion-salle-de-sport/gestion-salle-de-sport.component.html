@@ -1,0 +1,48 @@
+
+<div id="main-content" class="container-fluid p-4 ">
+<div class="row clearfix">
+  <div class="col-lg-12">
+    <div class="card">
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Users">Propriétaire salle de sport</a></li>
+      </ul>
+      <div class="tab-content mt-0">
+        <div class="tab-pane active show" id="Users">
+          <div class="table-responsive">
+            <table class="table table-hover table-custom spacing8">
+              <thead>
+              <tr>
+                <th class="w60">Nom</th>
+                <th></th>
+                <th>prix</th>
+                <th>Nom Salle De Sport</th>
+                <th>Numero Tlephone</th>
+                <th class="w100">Action</th>
+              </tr>
+              </thead>
+              <tbody *ngFor="let gym of listeGym  ; let i = index ">
+              <tr data-status="approved">
+                <td class="w60">
+                  <img src="//localhost:8080/public/images/salleDeSport/{{gym.imageVitrine}}" data-toggle="tooltip" data-placement="top" title="{{gym.nomSalle}}" alt="Avatar" class="w35 rounded">
+                </td>
+                <td>
+                  <a href="javascript:void(0);" title="">{{gym.nomSalle}}</a>
+                  <p class="mb-0">{{gym.rue}},{{gym.ville}},{{gym.codePostal}}</p>
+                </td>
+                <td><span >{{gym.prix}}</span>
+                </td>
+                <td><span >{{gym.nomSalle}}</span>
+                <td><span >{{gym.numTel}}</span>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-default js-sweetalert button" title="Delete" data-type="confirm"><i class="fa-solid fa-trash-can"></i></button></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

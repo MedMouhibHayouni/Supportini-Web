@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css?family=Audiowide");
+h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+}
+
+li {
+  margin: 1.5em 0;
+  padding: 0;
+}
+
+b { /* used for event dates/times */
+  margin-right: 3px;
+}
+
+::ng-deep ngb-modal-backdrop {
+  z-index: 1050 !important;
+}
+
+.demo-app {
+  display: flex;
+  min-height: 100%;
+  /*font: italic 2em "Fira Sans", serif;;*/
+  font-family: "Audiowide", cursive;
+  font-size: 20px;
+}
+
+.demo-app-sidebar {
+  background-image: linear-gradient(to right, #ffdd00 0%, #fb8a02 51%, #ff842b 100%);
+  width: 300px;
+  max-height: 70%;
+  line-height: 1.5;
+  border-right: 1px solid #d3e2e8;
+}
+
+.demo-app-sidebar :hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.demo-app-sidebar-section {
+  padding: 2em;
+}
+
+.demo-app-main {
+  flex-grow: 1;
+  padding: 1.5em;
+}
+
+.fc { /* the calendar root */
+  max-width: 100%;
+  max-height: 70%;
+  margin: 0 auto;
+}
+
+.fc-dayGridMonth-button{
+  background: #FFA117 !important;
+}
+
+
+demo-app-main{
+  background: black;
+}
+
+
+button{
+  background-color: black !important;
+}
+.fc-view{
+  background: black !important;
+}
+.fc-event-vert .fc-event-bg {
+  background: #2b2b2c;
+}
+.fc-daygrid fc-dayGridMonth-view fc-view{
+  background : black;
+
+}
+.fc table{
+}
+
+.fc td, .fc th {
+  border-style: double !important;
+  border-width: 3px !important;
+  border-color: #aaa !important;
+}
+
+.fc.fc-theme-standard .fc-view-harness .fc-view{
+  background:transparent !important;
+}
+
+.fc .fc-toolbar.fc-header-toolbar{
+  background: green !important;
+}
+.fc.fc-theme-standard .fc-view-harness .fc-view{
+  background:green !important;
+}
+.fc-day-today {
+  background: #fc601d !important;
+  border: none !important;
+}
+.fc-daygrid-day{
+  background: #FFA117 !important;
+}

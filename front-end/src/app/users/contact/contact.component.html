@@ -1,0 +1,52 @@
+
+
+
+
+<div  class="container-fluid p-4 d-flex justify-content-center " style="margin-bottom: 11.9%">
+<div class="card-body backgroundCard col-md-6">
+  <h1 class="title text-center text-larger" >Contacter Nous</h1>
+  <p style="text-align :center;">Nous tenons à vous remercier de votre confiance et à vous assurer que nous sommes toujours
+    à votre écoute pour prendre les mesures nécessaires afin de répondre à vos attentes au niveau de nos site.</p>
+   <p style="text-align :center;"> Pour effectuer une réclamation ou partager votre avis avec nous, veuillez remplir le formulaire ci-dessous</p>
+  <form ngForm #contactForm="ngForm">
+    <div class="row justify-content-center">
+      <div class="col-sm-6 col-md-6 ">
+        <div class="form-group">
+          <input class="form-control" type="text" name="nom" ngModel #nom="ngModel" placeholder="Entrer le Nom" required >
+          <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+            Nom est obligatoire.
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="row justify-content-center">
+      <div class="col-sm-6 col-md-6 ">
+        <div class="form-group">
+          <input type="email" class="form-control " name="email" placeholder="Adresse email" ngModel #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+          <div class="invalid-feedback d-block text-left" *ngIf="email.invalid&&email.touched&&email.hasError('required')">
+            Adresse Email est obligatoire.
+          </div>
+          <div class="invalid-feedback d-block text-left" *ngIf="email.invalid&&email.touched&&email.hasError('pattern')">
+            merci de fournir une adresse email valide.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center " >
+      <div class="col-sm-6 col-md-6 ">
+        <div class="form-group">
+          <textarea type="text" class="form-control" name="Message" ngModel #Message="ngModel" placeholder="Message" rows="6" required></textarea>
+          <div class="invalid-feedback d-block text-left" *ngIf="Message.invalid&&Message.touched&&Message.hasError('required')">
+            Message est obligatoire.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center m-t-20">
+        <button type="button" class="btn btn-primary" (click)="showSuccess()" [disabled]="contactForm.invalid" >ENVOYER</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

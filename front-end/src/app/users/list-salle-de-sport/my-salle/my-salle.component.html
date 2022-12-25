@@ -1,0 +1,53 @@
+
+<div class="auth-main"  *ngIf="listeGym?.length==0">
+  <div class="auth_div vivify popIn ">
+    <div class="card page-400">
+      <div class="body">
+        <p class="lead mb-3"><span class="text">Oops! </span></p>
+        <p>Desolé il n'existe pas une offre compatible à votre choix avec ces critères, s'il vous plaît consulter notre liste complète.</p>
+        <div class="margin-top-30">
+          <a  class="btn btn-round btn-default btn-block" routerLink="/ajout-salle"><i class="fa fa-arrow-left"></i> <span>ajouter votre salle de sport</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex flex-column align-content-center container " *ngIf="listeGym?.length!=0">
+  <div class="row  justify-content-md-between mb-3 p-3">
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Nom salle de sport" #myInput [(ngModel)]="searchGym" (keyup)="findGymWithLettre(myInput.value)"  >
+    </div>
+    <div class="input-group col-md-4">
+      <select  class="custom-select" id="inputGroupSelect04"(change)="filterPrix($event)" >
+        <option selected>Trier par Prix</option>
+        <option value="1" >Prix Croissant</option>
+        <option value="2">Prix Decroissant</option>
+
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Prix</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary" title="ajouter" routerLink="/ajout-salle">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div  class=" row d-flex flex-column align-content-center container   ">
+
+  <div    *ngFor="let gym of listeGym" >
+    <button (click)="deleteGym(gym.id)"  type="button" class="btn btn-sm btn-outline-danger js-sweetalert button" title="Bannir" data-type="confirm" >
+      <i class="fa-solid fa-trash-can"></i></button>
+    <a routerLink="/detail-salle/{{gym.id}}">
+      <app-iteam-salle [gyms]="gym" ></app-iteam-salle>
+    </a>
+
+  </div>
+  </div>
+</div>
+
+
+
+

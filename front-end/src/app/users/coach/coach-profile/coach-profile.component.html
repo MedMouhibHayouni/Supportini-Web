@@ -1,0 +1,88 @@
+
+
+<div  class="p-3">
+
+  <div class="row clearfix m-0">
+    <div class="col-md-12">
+      <div class="card social">
+        <div class="profile-header d-flex justify-content-between justify-content-center">
+          <div class="d-flex">
+            <div class="mr-3">
+<!--              <img src="http://localhost:8080/public/images/imageUser/{{user.image_name}}" class="rounded" alt="">-->
+            </div>
+            <div class="details">
+              <h5 class="mb-0">{{coach.nom}} {{coach.prenom}}</h5>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-xl-4 col-lg-4 col-md-5">
+      <div class="card">
+
+        <div class="body">
+
+          <small class="text-muted">Adresse Email: </small>
+          <p>{{coach.email}}</p>
+          <hr>
+          <small class="text-muted">Numéro de Téléphone: </small>
+          <p>{{coach.phone}}</p>
+           <br>
+          <!--      contact-->
+          <form  >
+            <div class="form-group">
+              <textarea type="text" class="form-control" name="Message" [(ngModel)]="emaile" id="mymail" placeholder="Message" rows="6" ></textarea>
+<!--[(ngModel)]="emaile.mess" -->
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 text-center m-t-20">
+                <button type="button" class="btn btn-primary" id="btn"  >ENVOYER</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="col-xl-8 col-lg-8 col-md-7">
+      <div class="card" id="Gallery">
+        <div class="header">
+          <h2>Gallery</h2>
+
+        </div>
+        <!--    modal image -->
+        <div class="modal fade new-project-modal-galery" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelGal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter des photos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      <div class="card" >
+
+      <div class="body lightGallery" *ngIf="galery">
+            <lightgallery [settings]="settings" [onInit]="onInit" class=" row clearfix lightGallery">
+             <a class="col-lg-3 col-md-6 m-b-30 rounded  light-link gallery-item"*ngFor="let item of galery" [attr.href]="'http://localhost:8080/public/images/GaleryUser/'+item.image"><img class="img-fluid rounded"  src="http://localhost:8080/public/images/GaleryUser/{{item.image}}" alt=""/></a>
+            </lightgallery>
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+

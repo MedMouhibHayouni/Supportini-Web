@@ -1,0 +1,79 @@
+<div class="container p-4">
+  <div class=" col-md-12 col-sm-12">
+    <div class="card">
+      <div class="body">
+
+        <form class="form-auth-small m-t-20 mb-3 " ngForm #ProduitForm="ngForm">
+          <div class="row clearfix">
+
+            <div class="col-md-6 col-sm-6">
+              <div class="form-group">
+                <h6>Nom Produit</h6>
+                <input [(ngModel)]="produit.nomproduit" #nomproduitInput type="text" class="form-control round"
+                       name="nomproduit" ngModel #nomproduit="ngModel" placeholder="Nom..." required>
+                <div class="invalid-feedback d-block text-left"
+                     *ngIf="nomproduit.invalid&&nomproduit.touched&&nomproduit.hasError('required')">
+                  Nom de Produit Obligatoire!
+                </div>
+                <h6>Prix Produit</h6>
+                <input [(ngModel)]="produit.prix" #prixInput type="number" class="form-control round" name="Prix"
+                       ngModel #Prix="ngModel" placeholder="Prix..." required>
+                <div class="invalid-feedback d-block text-left"
+                     *ngIf="Prix.invalid&&Prix.touched&&Prix.hasError('required')">
+                  Prix de Produit Obligatoire!
+                </div>
+                <h6>Description de Produit</h6>
+                <div class="col-sm-12">
+                  <div class="form-group mt-3">
+                    <textarea [(ngModel)]="produit.description" #descriptionInput rows="4" class="form-control "
+                              name="description" ngModel #description="ngModel" placeholder="Description..."
+                              required></textarea>
+                    <div class="invalid-feedback d-block text-left"
+                         *ngIf="description.invalid&&description.touched&&description.hasError('required')">
+                      Description est obligatoire.
+                    </div>
+
+                    <div class="form-group">
+                      <h6 class="form-label">Categorie</h6>
+                      <select  type="text" name="catrg" #categorieIdInput class="form-control show-tick">
+                        <option value="default">----</option>
+                        <option value="1">Fitness</option>
+                        <option *ngFor="let item of categories" >{{item.nom}}</option>
+
+                      </select>
+                    </div>
+
+                    <h6>Quantité</h6>
+                    <input [(ngModel)]="produit.quantite" #quantiteInput type="number" class="form-control round"
+                           name="quantite" ngModel #quantite="ngModel" placeholder="Quantite..." required>
+                    <div class="invalid-feedback d-block text-left"
+                         *ngIf="quantite.invalid&&quantite.touched&&quantite.hasError('required')">
+                      Quantite de Produit Obligatoire!
+                    </div>
+                    <div class="row clearfix col-sm-12">
+                      <h6>ajouter les images De Produit ici</h6>
+                      <div class="col-md-12 ">
+                        <input multiple="multiple" type="file" class="dropify" (change)="selectFiles($event)">
+                      </div>
+                    </div>
+
+                    <div class="row clearfix col-sm-12 m-5">
+                      <button type="submit" class="btn btn-round btn-success" (click)="createProduit();showSuccess()"
+                              [disabled]="ProduitForm.invalid" [routerLink]="'/liste-Produit' ">Valider
+                      </button>
+                      <button type="submit" class="btn btn-round btn-default" [routerLink]="'/liste-Produit'">Annuler
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+

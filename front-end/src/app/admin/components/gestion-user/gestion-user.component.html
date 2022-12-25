@@ -1,0 +1,182 @@
+<div class="container-fluid p-4 ">
+  <div class="row clearfix m-0">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="d-flex flex-column align-content-center  " >
+          <div class="row  justify-content-md-between mb-3 p-3">
+            <div class="col-md-3">
+              <input type="text" class="form-control" placeholder="Nom salle de sport"   [(ngModel)]="searchText" >
+            </div>
+            <div class="input-group col-md-4">
+              <select  class="custom-select" id="inputGroupSelect04" (change)="filterRole($event)" >
+                <option selected>Selection par Role</option>
+                <option value="2" >Entrainé</option>
+                <option value="3">Entraineur</option>
+                <option value="4">Propriétaire de Gym</option>
+              </select>
+
+
+            </div>
+          </div>
+        </div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Users">Gestion Utilisateur</a>
+          </li>
+        </ul>
+        <div class="tab-content mt-0">
+          <div class="tab-pane active show" id="Users">
+            <div class="table-responsive">
+              <table class="table table-hover table-custom spacing8">
+                <thead>
+                <tr>
+                  <th>Photo de Profile</th>
+                  <th class="w60">Info Utilisateur</th>
+
+                  <th>Numéro De Téléphone</th>
+                  <th>Cin</th>
+
+                  <th>Role</th>
+                  <th class="w100">Action</th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let user of listUser|filter:searchText">
+                <tr *ngIf="user.fk_idRole!=1" data-status="approved">
+                  <td class="w60">
+                    <img src="http://localhost:8080/public/images/imageUser/{{user.image_name}}" data-toggle="tooltip" data-placement="top" title="photo de profil"
+                         alt="Avatar" class="w35 rounded">
+                  </td>
+                  <td>
+                    <a href="javascript:void(0);" title="">{{user.prenom}} {{user.nom}}</a>
+                    <p class="mb-0">{{user.email}}</p>
+                  </td>
+
+                  <td>{{user.phone}}</td>
+                  <td>{{user.cin}}</td>
+                  <td><span>{{user.fk_idRole}}</span>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-default" title="Edit" data-toggle="modal"
+                            data-target=".new-project-modal" (click)="getEditUser(user)"><i class="fa fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert button" title="Bannir"
+                            data-type="confirm" *ngIf="user.status==0" (click)="banUser(user.id)"><i
+                      class="fa-solid fa-user-slash"></i></button>
+                    <button type="button" class="btn btn-sm btn-outline-success js-sweetalert button" title="Unbann"
+                            data-type="confirm" *ngIf="user.status==1" (click)="banUser(user.id)"><i
+                      class="fa-solid fa-user"></i></button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal modifier user-->
+<div class="modal fade new-project-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier un utilisateur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="body">
+          <div class="row ">
+            <form class="form-auth-small m-t-20 mb-3 " ngForm #userForm="ngForm">
+              <div class="container-fluid">
+                <div class="row clearfix p-3">
+                  <input type="file" class="dropify" (change)="onFileChanged($event)">
+                </div>
+                <div class="row clearfix">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="nom" ngModel #nom="ngModel" placeholder="Nom"
+                             [(ngModel)]="user.nom" required>
+                      <div class="invalid-feedback d-block text-left"
+                           *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+                        Nom est obligatoire.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="prenom" ngModel #prenom="ngModel"
+                             placeholder="Prénom" [(ngModel)]="user.prenom" required>
+                      <div class="invalid-feedback d-block text-left"
+                           *ngIf="prenom.invalid&&prenom.touched&&prenom.hasError('required')">
+                        prenom est obligatoire.
+                      </div>
+                    </div>
+                  </div>
+                  <!--                    <div class="col-lg-6 col-md-12">-->
+                  <!--                      <div class="form-group">-->
+                  <!--                        <div class="input-group">-->
+                  <!--                          <div class="input-group-prepend">-->
+                  <!--                            <span class="input-group-text"><i class="icon-calendar"></i></span>-->
+                  <!--                          </div>-->
+                  <!--                          <input data-provide="datepicker" data-date-autoclose="true" class="form-control"-->
+                  <!--                                 placeholder="Date de naissance">-->
+                  <!--                        </div>-->
+                  <!--                      </div>-->
+                  <!--                    </div>-->
+                  <!--                    <div class="col-lg-6 col-md-12">-->
+                  <!--                      <div class="form-group">-->
+                  <!--                        <div class="input-group">-->
+                  <!--                          <div class="input-group-prepend">-->
+                  <!--                            <span class="input-group-text"><i class="icon-globe"></i></span>-->
+                  <!--                          </div>-->
+                  <!--                          <input type="text" class="form-control" placeholder="http://">-->
+                  <!--                        </div>-->
+                  <!--                      </div>-->
+                  <!--                    </div>-->
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                      <input type="number" class="form-control round" name="tel" ngModel #tel="ngModel"
+                             placeholder="Numero Telephone" pattern="[0-9]{8,8}" [(ngModel)]="user.phone" required>
+                      <div class="invalid-feedback d-block text-left"
+                           *ngIf="tel.invalid&&tel.touched&&tel.hasError('required')">
+                        Numero Telephone est obligatoire.
+                      </div>
+                      <div class="invalid-feedback d-block text-left" *ngIf="tel.errors?.['pattern']">
+                        Numero Telephone doit de longueur 8.
+                      </div>
+                    </div>
+                  </div>
+
+
+<!--                  <div class="col-lg-6 col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                      <select class="form-control" [(ngModel)]="user.fk_idRole">-->
+<!--                        <option value="">&#45;&#45; Choisir Le Role &#45;&#45;</option>-->
+<!--                        <option [selected]="user.fk_idRole==2" value="2">Entraîner</option>-->
+<!--                        <option [selected]="user.fk_idRole==3" value="3">Entraineur</option>-->
+<!--                        <option [selected]="user.fk_idRole==4" value="4">Propriétaire salle de sport</option>-->
+<!--                      </select>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-round btn-default" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-round btn-success" data-dismiss="modal" [disabled]="userForm.invalid" (click)="[updateUser(user.id),onUpload(user.id)]">Modifier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

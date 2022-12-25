@@ -1,0 +1,141 @@
+<div class="row  justify-content-md-between mb-3 p-3">
+  <div class="col-md-3">
+    <input type="text" class="form-control " placeholder="Nom Entrainee" #NameEntr
+           (keyup)="SearchByNameEntr(NameEntr.value)">
+  </div>
+
+
+  <div class="table-responsive">
+    <table class="table table-hover table-custom spacing8">
+      <thead class="headerTable">
+      <tr>
+        <th></th>
+        <th>Entrainee</th>
+        <th>Details</th>
+        <th>Age</th>
+        <th>Etats du Suivi</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let sui of suiviss;let first of firstSuivi; let i = index">
+      <tr data-toggle="modal" data-target=".new-project-modal" (click)="showDetails(sui.id)">
+        <td class="w60">
+          <img src="../assets/images/xs/avatar1.jpg" data-toggle="tooltip" data-placement="top"
+               title="{{sui.nom}} {{sui.prenom}}" alt="Avatar" class="w60 rounded">
+        </td>
+        <td>
+          <a class="nomPrenomTable" href="">{{sui.nom}} {{sui.prenom}}</a>
+          <p class="mb-0">{{first.date_suivi}}</p>
+        </td>
+        <td>
+          <span> Cliquer Pour avoir plus du details ...</span>
+        </td>
+        <td>{{sui.age}}</td>
+        <td>
+          <button disabled class="badge" *ngIf="timeCurrent(sui.date_suivi)" name="statusSuivi"
+                  [ngClass]="{'badge-warning': timeCurrent(sui.date_suivi)=='Achevé Suivi','badge-success' : timeCurrent(sui.date_suivi)=='Nouvelle Suivi' }">
+            <span class="circleBtn">&#8226;</span>{{btnVal}}</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal fade new-project-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true" *ngIf="suivi">
+    <div class="modal-dialog" role="document">
+      <div class="modal-header">
+        <h1>{{suivi.nom}} {{suivi.prenom}}</h1>
+      </div>
+      <div class="modal-content">
+        <mat-tab-group mat-align-tabs="center" animationDuration="0">
+          <mat-tab class="tabs" label="Suivi">
+            <div class="main-container">
+              <div class="suiviDesign">
+              <div class="cards">
+                <div class="card card-5 align-center">
+                  <div class="card__icon align-center"><i class="fa fa-thin fa-cake-candles white"></i></div>
+                  <p class="card__exit"></p>
+                  <h2 class="card__title">Age</h2>
+                  <h2 class="underTitle">{{suivi.age}} Ans</h2>
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <div class="card card-1 align-center">
+                      <div class="card__icon"><i class="fa fa-duotone fa-weight-scale white"></i></div>
+                      <p class="card__exit"></p>
+                      <h1 class="card__title">Poids</h1>
+                      <h2 class="underTitle">{{suivi.poids}} Kg</h2>
+                    </div>
+
+                  </div>
+                  <div class="column">
+                    <div class="card card-2 align-center">
+                      <div class="card__icon"><i class="fa fa-ruler-vertical white"><i
+                        class="fa fa-person white"></i></i></div>
+                      <p class="card__exit"></p>
+                      <h2 class="card__title">Taille</h2>
+                      <h2 class="underTitle">{{suivi.taille}} Cm</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card card-3 align-center">
+                  <div class="card__icon"><i class="fa fas fa-chart-bar"></i></div>
+                  <p class="card__exit"></p>
+                  <div style="display: block">
+                    <canvas baseChart
+                            [datasets]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [type]="barChartType">
+                    </canvas>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            </div>
+          </mat-tab>
+          <mat-tab class="tabs" label="Feedback">
+            <div class="main-container">
+              <div class="noFeedbackDiv align-center" *ngIf="feedbackByIdSuivi==null">
+                <h3 class="noFeedback" >Pas De Feedback Pour ce Dernier Suivi</h3>
+                <div class="textArea">
+                  <textarea name="message" rows="2" class="question" id="msg" required autocomplete="off"
+                            id="feedBackInput" #feedBackInput></textarea>
+                  <label for="msg"><span>Quel est Votre Feedback ?</span></label>
+                </div>
+                <div *ngIf="!feedbackByIdSuivi">
+                  <button class="continue-application" (click)="addFeedback(suivi.id)">
+                    <div>
+                      <div class="pencil"></div>
+                      <div class="folder">
+                        <div class="top">
+                          <svg viewBox="0 0 24 27">
+                            <path
+                              d="M1,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,8.17157288 C24,8.70200585 23.7892863,9.21071368 23.4142136,9.58578644 L20.5857864,12.4142136 C20.2107137,12.7892863 20,13.2979941 20,13.8284271 L20,26 C20,26.5522847 19.5522847,27 19,27 L1,27 C0.44771525,27 6.76353751e-17,26.5522847 0,26 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z"></path>
+                          </svg>
+                        </div>
+                        <div class="paper"></div>
+                      </div>
+                    </div>
+                    Envoyer Un Feedback
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="blockquote-wrapper" *ngIf="feedbackByIdSuivi!=null">
+              <div class="blockquote">
+                <h1>
+                  {{feedbackByIdSuivi}}
+                </h1>
+                <h4>&mdash;</h4>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

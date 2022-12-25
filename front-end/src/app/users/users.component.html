@@ -1,0 +1,12 @@
+<app-nav-bar  [authentified]="authentified"></app-nav-bar>
+
+<section id="main-content" *ngIf="authentified;else elseBlock">
+  <app-Panier></app-Panier>
+  <app-block-header [titleHeaderPage]="titleHeaderPage"  [route]="route" [titleSecondPage]="titleSecondPage"></app-block-header>
+  <router-outlet (activate)="changeTitleHeader()"></router-outlet>
+</section>
+<ng-template #elseBlock >
+  <app-Panier></app-Panier>
+<app-block-header [titleHeaderPage]="titleHeaderPage"  [route]="route" [titleSecondPage]="titleSecondPage"></app-block-header>
+  <router-outlet (activate)="changeTitleHeader()"></router-outlet>
+</ng-template>

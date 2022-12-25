@@ -1,0 +1,61 @@
+<div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card">
+      <div class="body">
+        <div class="row clearfix">
+          <div class="col-6">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="regime.nom" class="form-control" placeholder="nom de regime">
+            </div>
+          </div>
+
+
+          <div class="col-3" (change)="choixRegime($event)">
+            <div class="form-group">
+              <select class="form-control show-tick">
+                <option selected> Type </option>
+                <option value="vegan">Vegan</option>
+                <option value="vegetarien">Vegetarien</option>
+                <option value="omnivore">Omnivore</option>
+
+              </select>
+            </div>
+          </div>
+          <div class="col-3" >
+            <div class="form-group">
+              <input type="text" [(ngModel)]="regime.nbrkg" class="form-control" placeholder="nombre de kilogramme estimé a perdre">
+            </div>
+          </div>
+
+        </div>
+
+
+<div class="row">
+  <div class="col-4 " >
+    <div class="form-group mt-3">
+      <textarea rows="6"  [(ngModel)]="regime.petidej"class="form-control no-resize" placeholder="le petit dej"></textarea>
+    </div>
+  </div>
+  <div class="col-4 " >
+    <div class="form-group mt-3">
+      <textarea rows="6" [(ngModel)]="regime.dejeuner" class="form-control no-resize" placeholder="Le dej"></textarea>
+    </div>
+  </div>
+  <div class="col-4 " >
+    <div class="form-group mt-3">
+      <textarea rows="6" [(ngModel)]="regime.dinner" class="form-control no-resize" placeholder="Le dinner"></textarea>
+    </div>
+  </div>
+
+</div>
+
+
+          <div class="col-sm-12 " style="text-align: center">
+            <button type="submit" class="btn  btnColor" (click)="ajouterRegime()"  [routerLink]="['/detail-annonce/',id]" >Ajouter</button>
+            <button type="submit" class="btn btn-outline-secondary">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

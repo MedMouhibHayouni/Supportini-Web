@@ -1,0 +1,12 @@
+.text-color {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#footer {
+  position: page;
+  bottom: 0;
+  left: 25%;
+  width: 100%;
+  height: 50px;
+}
+

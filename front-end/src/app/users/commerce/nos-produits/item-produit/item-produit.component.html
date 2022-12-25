@@ -1,0 +1,22 @@
+
+
+
+
+<div class="card">
+  <div routerLink="/detail-Produit/{{produit.id}}">
+  <img class="imgprod" src="//localhost:8080/public/images/{{produit.imageProduit}}" alt="">
+  <div class="body">
+    <h6 class="mt-3">{{produit.nomproduit}}</h6>
+    <div class="text-muted">{{produit.prix}}</div>
+  </div>
+  </div>
+  <div class="card-footer">
+
+    <button class="btn btn-general" *ngIf="!AjouterauPanierButton"  (click)="AjouterauPanierButton=true"><i class="icon-basket" ></i> Ajouter au Panier</button>
+    <div class="d-flex w-50"*ngIf="AjouterauPanierButton" >
+      <input type="number" min="1" class="form-control"[(ngModel)]="amount" >
+      <button class="btn btn-danger" (click)="add(); AjouterauPanierButton=false ">Add</button>
+    </div>
+  </div>
+</div>
+

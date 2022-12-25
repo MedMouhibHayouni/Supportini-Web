@@ -1,0 +1,23 @@
+
+<a class="card" href="javascript:void(0)" routerLink="/detail-annonce/{{annonce.id}}"  >
+  <div class="body text-center">
+    <img class="img-fluid h-50 " src="http://localhost:8080/public/images/annonce/{{annonce.image}}" alt="">
+
+    <h6 class="mt-3">{{annonce.titre}}</h6>
+    <div class="text-center text-muted">{{annonce.discipline}}</div>
+  </div>
+
+  <div class="card-footer text-center">
+    <div class="row clearfix">
+      <div class="col-6">
+        <i class=" fa fa-map-marker design-icone"></i>
+        <div><span class="text-muted">{{annonce.rue}},{{annonce.codePostal}},{{annonce.ville}}</span></div>
+      </div>
+      <div class="col-6">
+        <i class="fa fa-dollar font-22 design-icone"></i>
+        <div><span class="text-muted">{{annonce.prix}}</span></div>
+      </div>
+    </div>
+
+  </div>
+</a>

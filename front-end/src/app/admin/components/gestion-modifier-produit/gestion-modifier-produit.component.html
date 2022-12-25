@@ -1,0 +1,62 @@
+<div class="body" >
+  <!-- code Upload images  -->
+  <div class="row ">
+    <form class="form-auth-small m-t-20 mb-3 " ngForm #ProduitForm="ngForm">
+      <div class="container-fluid">
+        <div class="block-header">
+          <div class="row clearfix">
+            <div class="col-md-12  ">
+              <input type="file" class="dropify" >
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+              <input type="text" class="form-control"  name="nom" ngModel #nom="ngModel" placeholder="Nom de Produit" required>
+              <div class="invalid-feedback d-block text-left" *ngIf="nom.invalid&&nom.touched&&nom.hasError('required')">
+                NOM de Produit est obligatoire
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+              <input type="number" class="form-control" name="prix" ngModel #prix="ngModel" placeholder="prix" pattern="[1-9][0-9]{0,}" required>
+              <div class="invalid-feedback d-block text-left" *ngIf="prix.invalid&&prix.touched&&prix.hasError('required')">
+             Prix est obligatoire
+              </div>
+              <div class="invalid-feedback d-block text-left" *ngIf="prix.errors?.['pattern']">
+                Prix doit etre positifs
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group">
+                <input type="number" class="form-control" name="Quantite" ngModel #Quantite="ngModel" placeholder="Quantite" pattern="[1-9][0-9]{0,}" required>
+                <div class="invalid-feedback d-block text-left" *ngIf="Quantite.invalid&&Quantite.touched&&Quantite.hasError('required')">
+                  Quantite est obligatoire
+                </div>
+                <div class="invalid-feedback d-block text-left" *ngIf="prix.errors?.['pattern']">
+                  Quantite doit etre positifs
+                </div>
+              </div>
+          </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12">
+            <div class="form-group">
+              <textarea rows="4" type="text" class="form-control"  name="description" ngModel #description="ngModel" placeholder="Description" required></textarea>
+              <div class="invalid-feedback d-block text-left" *ngIf="description.invalid&&description.touched&&description.hasError('required')">
+                Description est obligatoire.
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-round btn-default" data-dismiss="modal" >Annuler</button>
+        <button type="button" class="btn btn-round btn-success" (click)="updateProduct();showSuccess()"[disabled]="ProduitForm.invalid"[routerLink]="'/liste-Produit' ">Modifier</button>
+      </div>
+    </form>
+  </div>
+</div>
+

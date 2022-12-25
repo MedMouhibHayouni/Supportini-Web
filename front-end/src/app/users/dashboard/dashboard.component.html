@@ -1,0 +1,93 @@
+<div class="meteo">
+  <div class="topWeatherleft1">
+  </div>
+  <div class="topWeatherCenter">
+    <app-meteo></app-meteo>
+  </div>
+  <div class="topWeatherRight">
+  </div>
+</div>
+<div class="afterWeather">
+  <div class="list-planing">
+    <h1 class="align-center">Liste Planning</h1>
+    <app-list-planning-dashboard></app-list-planning-dashboard>
+  </div>
+  <div class="listSalle">
+    <app-liste-salle-de-sport-dashboard></app-liste-salle-de-sport-dashboard>
+  </div>
+</div>
+<div class="suivi">
+</div>
+
+
+
+
+<div >
+
+
+    <app-top-ten-annonce [user]="user"></app-top-ten-annonce>
+
+
+<div class="productsList">
+  <h1 class="align-center">Nouveaux Produits</h1>
+  <ul>
+    <li *ngFor="let listProduct of listeProduit">
+      <div class="details">
+        <h2>{{listProduct.nomproduit}}</h2>
+        <p>{{listProduct.prix}}DT</p>
+        <p>{{listProduct.description}}</p>
+        <img src="http://localhost:8080/public/images/{{listProduct.imageProduit}}" style="width: 100px; height: 100px">
+        <img src="http://localhost:8080/public/images/{{listProduct.imageProduit}}"style="width: 100px; height: 100px">
+      </div>
+    </li>
+  </ul>
+  <a class="buttonConsult" routerLink="/Nos-Produits">Consulter Produit ...</a>
+</div>
+
+</div>
+<!--<div class="suivi">-->
+<!--  <div class="card 1">-->
+<!--    <div class="card">-->
+<!--      <div class="body">-->
+<!--        <div class="d-flex align-items-center justify-content-center">-->
+<!--          <div class="icon-in-bg bg-indigo text-white text-large rounded-circle"><i class="fa fa-ruler-vertical"><i-->
+<!--            class="fa fa-person"></i></i></div>-->
+<!--          <div class="ml-4">-->
+<!--            <span>Taille</span>-->
+<!--            <h4 class="mb-0 font-weight-medium">{{suiviss?.taille}} cm</h4>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="card 2">-->
+<!--    <div class="card">-->
+<!--      <div class="body">-->
+<!--        <div class="d-flex align-items-center justify-content-center">-->
+<!--          <div class="icon-in-bg bg-pink text-white text-large rounded-circle"><i class="fa fa-cake-candles"></i></div>-->
+<!--          <div class="ml-4">-->
+<!--            <span>Age</span>-->
+<!--            <h4 class="mb-0 font-weight-medium">{{suiviss?.age}} Ans</h4>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="card 3">-->
+<!--    <div class="card">-->
+<!--      <div class="body">-->
+<!--        <div class="d-flex align-items-center justify-content-center">-->
+<!--          <div class="icon-in-bg bg-azura text-white rounded-circle text-large"><i class="fa fa-weight-scale"></i></div>-->
+<!--          <div class="ml-4">-->
+<!--            <span>Poids</span>-->
+<!--            <h4 class="mb-0 font-weight-medium">{{suiviss?.poids}} Kg</h4>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--  </div>-->
+<!--</div>-->
+
